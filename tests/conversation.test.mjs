@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createConversation,nextQuestion,applyAnswer,nextAction,bookcaseInput,urgentIntent} from '../lib/conversation.mjs';
+import {createConversation,nextQuestion,applyAnswer,nextAction,bookcaseInput,urgentIntent,repairConversationMatch} from '../lib/conversation.mjs';
 import {design} from '../lib/bookcase.mjs';
 import {POST,GET} from '../app/api/conversation/route.js';
 import {mkdtemp,rm} from 'node:fs/promises';
@@ -41,4 +41,13 @@ test('AI adapter sends bounded context, hides credentials and enforces persisten
 test('Vague and safety requests do not open an unrelated shopping journey',()=>{
  assert.equal(createConversation('I want to','vague').guideId,null);
  const r=createConversation('A sewage backup','sewage');assert.equal(r.urgent,true);assert.equal(nextQuestion(r),undefined);
+});
+
+test('Basement building is not silently treated as a flood; old matches are repaired',()=>{
+ for(const request of ['frame my basement','build my basement','finish my basement']){
+ const r=createConversation(request,'test');assert.equal(r.guideId,'basement-finishing');assert.equal(r.urgent,false);assert.match(nextQuestion(r).text,/frame walls/);
+ const old={...r,guideId:'basement-flood',urgent:true};assert.equal(repairConversationMatch(old).urgent,false);
+ const hazard={...old,messages:[{role:'user',content:'It is flooded now'}]};assert.equal(repairConversationMatch(hazard).urgent,true);
+ }
+ assert.equal(createConversation('My basement is flooded','flood').urgent,true);
 });
