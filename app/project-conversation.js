@@ -1,5 +1,6 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
+import AIProjectIntake from './ai-project-intake';
 import ProjectArt from './project-art';
 import ProjectDeliverable from './project-deliverable';
 import ProjectInstructions from './project-instructions';
@@ -23,6 +24,7 @@ export function ProjectEntry({onStart,onUrgent,aiEnabled,conversations=[],onResu
 
 export default function ProjectConversation({record,onUpdate,onNavigate,owned,onToggleOwned,aiEnabled,panel='conversation'}){
  const [text,setText]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false),[askAI,setAskAI]=useState(false),[proposal,setProposal]=useState(null);
+ const [guided,setGuided]=useState(false);
  const bottom=useRef(null),alive=useRef(true);
  useEffect(()=>{alive.current=true;return()=>{alive.current=false;};},[]);
  const guide=library.find(p=>p.id===record.guideId),pack=packLibrary.find(p=>p.id===record.guideId),question=nextQuestion(record),questions=questionsFor(record),answered=questions.filter(q=>record.answers[q.id]).length;
@@ -41,6 +43,7 @@ export default function ProjectConversation({record,onUpdate,onNavigate,owned,on
  try{const response=await fetch('/api/conversation',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({guideId:record.guideId,messages:[{role:'user',content:record.request},...messages.slice(-10)]})});const data=await response.json();if(!response.ok)throw Error(data.error);if(alive.current){update({messages:[...messages,{role:'assistant',content:data.text}],urgent:!!data.urgent});setText('');}}catch(e){if(alive.current)setError(e.message);}finally{if(alive.current)setBusy(false);}
  }
  const candidates=!guide?searchLibrary({query:record.request}).slice(0,3):[];
+ if(aiEnabled&&!record.urgent&&!guided&&panel==='conversation')return <AIProjectIntake key={record.id} record={record} onUpdate={onUpdate} onNavigate={onNavigate} onGuided={()=>setGuided(true)}/>;
  return <section className="conversation-workspace focused-conversation"><div className="conversation-heading"><div><span className="entry-kicker">YOUR PROJECT</span><h1>{record.title||guide?.title||'Let’s work out the details'}</h1></div><span className="local-save">Saved on this device</span></div><div className="conversation-layout"><div className="conversation-main">
  {panel==='steps'?<><button className="text-button" onClick={()=>setPanel('conversation')}>← Back to project</button><ProjectInstructions key={record.id} record={record} onUpdate={update}/><button className="secondary" onClick={()=>setPanel('plan')}>Tools, quantities & download →</button></>:panel==='conversation'?<><p className="project-request">{record.request}</p>
 
