@@ -142,9 +142,9 @@ body{background:var(--paper)}.header{background:#ffffff;border-right:1px solid v
 .offer-card button{min-height:44px}.offer-card .secondary{margin-top:auto}
 @media(max-width:1000px){.offer-page .offer-grid{grid-template-columns:1fr}.offer-sign-in{align-items:flex-start;flex-direction:column}}
 /* Conversation history scrolls independently; the reply field never follows it off screen. */
-.conversation-workspace.focused-conversation.ai-chat-shell{position:fixed;top:var(--chat-top,76px);left:0;right:0;height:var(--chat-height,calc(100dvh - 76px));max-width:850px;display:flex;flex-direction:column;overflow:hidden;background:#fff;padding:20px 28px max(12px,env(safe-area-inset-bottom));z-index:2}
+.conversation-workspace.focused-conversation.ai-chat-shell{position:relative;height:auto;max-height:var(--chat-height,calc(100dvh - 76px));width:100%;max-width:850px;display:flex;flex-direction:column;overflow:hidden;background:#fff;padding:20px 28px max(12px,env(safe-area-inset-bottom));z-index:2}
 .ai-chat-shell .conversation-heading{flex:none;margin:0;padding-bottom:12px}.ai-chat-shell .conversation-heading h1{font-size:24px;overflow-wrap:anywhere}
-.ai-chat-scroll{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;padding:12px 8px 16px 0;overflow-anchor:none}
+.ai-chat-scroll{flex:0 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;padding:12px 8px 16px 0;overflow-anchor:none}
 .ai-chat-shell .followup-composer{flex:none;margin:0;border:1px solid #dedede;padding:12px;background:#f5f5f5}
 .ai-chat-shell .followup-composer textarea{resize:none;min-height:48px;max-height:110px;padding:6px}
 .ai-chat-shell .chat-jump-latest{align-self:center;flex:none;margin:4px 0 8px;min-height:44px;padding:8px 16px;box-shadow:0 2px 12px #0000000a}
