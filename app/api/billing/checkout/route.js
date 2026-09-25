@@ -6,7 +6,7 @@ export async function POST(request){
  if(!sameOrigin(request))return billingReply({error:'Request not allowed.'},403);
  if(!checkoutReady())return billingReply({error:'Checkout is not open yet. No payment has been taken.'},503);
  const user=await billingUser();if(!user)return billingReply({error:'Sign in before choosing a plan.'},401);
- if(!billingAccountAllowed(user))return billingReply({error:'Checkout is being tested privately and is not open yet.'},403);
+ if(!billingAccountAllowed(user))return billingReply({error:'Sign in to continue to checkout.'},403);
  let body;try{const raw=await request.text();if(raw.length>1000)throw Error();body=JSON.parse(raw);if(!['plus','project-pass'].includes(body.plan))throw Error();}catch{return billingReply({error:'Choose a valid plan.'},400);}
  try{
   const db=billingDB();if(body.plan==='project-pass'&&!await ownsProject(db,user.id,body.projectId))return billingReply({error:'Open a saved project before buying its Project Pass.'},409);

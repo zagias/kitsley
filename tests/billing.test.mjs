@@ -60,12 +60,12 @@ test('Only a paid current invoice grants Plus; replay keeps the same period',asy
 });
 
 import {billingAccountAllowed} from '../lib/billing.mjs';
-test('Sandbox checkout is restricted to the configured test account',()=>{
+test('Sandbox checkout supports existing and new signed-in accounts',()=>{
  const mode=process.env.STRIPE_MODE,id=process.env.BILLING_TEST_USER_ID;
  try{process.env.STRIPE_MODE='test';delete process.env.BILLING_TEST_USER_ID;
- assert.equal(billingAccountAllowed({id:'visitor'}),false);
+ assert.equal(billingAccountAllowed({id:'visitor'}),true);
  process.env.BILLING_TEST_USER_ID='tester';assert.equal(billingAccountAllowed({id:'tester'}),true);
- assert.equal(billingAccountAllowed({id:'visitor'}),false);assert.equal(billingAccountAllowed(null),false);
+ assert.equal(billingAccountAllowed({id:'visitor'}),true);assert.equal(billingAccountAllowed(null),false);
  process.env.STRIPE_MODE='live';assert.equal(billingAccountAllowed({id:'visitor'}),true);
  }finally{if(mode===undefined)delete process.env.STRIPE_MODE;else process.env.STRIPE_MODE=mode;if(id===undefined)delete process.env.BILLING_TEST_USER_ID;else process.env.BILLING_TEST_USER_ID=id;}
 });
