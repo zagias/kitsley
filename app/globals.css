@@ -166,3 +166,12 @@ body{background:var(--paper)}.header{background:#ffffff;border-right:1px solid v
 .primary:hover:not(:disabled),.art-caption button:hover:not(:disabled){box-shadow:0 0 0 1px #a46af266,0 4px 16px #7c3aed26}
 .primary:focus-visible,.art-caption button:focus-visible{outline:3px solid #a879ed;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){.primary,.art-caption button{transition:none}}
+
+/* In-site, Kitsley-branded secure checkout. */
+.kitsley-checkout{padding:0;border:1px solid #e6dff2;border-radius:20px;width:min(1080px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;color:#171717;background:white;box-shadow:0 24px 100px #160b3033}
+.kitsley-checkout::backdrop{background:#120c2299;backdrop-filter:blur(5px)}
+.checkout-header{display:flex;align-items:center;justify-content:space-between;padding:18px 26px;border-bottom:1px solid #ece7f4;position:sticky;top:0;background:#fff;z-index:2}
+.checkout-brand{display:flex;align-items:center;gap:12px;font-size:28px;letter-spacing:-1px}.checkout-brand .kitsley-mark{width:34px;height:34px}
+.checkout-close{width:44px;height:44px;font-size:28px;border-radius:50%;background:#f4efff;color:#54239b}.checkout-close:hover{background:#e9dcfc}
+.checkout-body{display:grid;grid-template-columns:320px minmax(0,1fr)}.checkout-summary{padding:30px 26px;background:linear-gradient(150deg,#f5efff,#fff 75%)}.checkout-summary h2{font-size:28px;margin:10px 0}.checkout-summary p,.checkout-summary li{font-size:15px;line-height:1.65}.checkout-summary ul{padding-left:20px;margin:24px 0}.checkout-summary li{margin:10px 0}.checkout-summary .checkout-amount{font-size:36px;font-weight:750;margin:12px 0}.checkout-amount small{font-size:15px;font-weight:400}.checkout-summary .small{font-size:13px}.checkout-summary .notice{margin-top:24px}.checkout-security{color:#666;margin-top:24px}.checkout-payment{padding:24px;min-height:320px;min-width:0}.checkout-payment h3{font-size:26px}.checkout-payment .primary{margin-top:18px}
+@media(max-width:700px){.kitsley-checkout{width:100%;max-width:100%;height:100dvh;max-height:100dvh;margin:0;border-radius:0}.checkout-body{grid-template-columns:1fr}.checkout-header{padding:12px 18px}.checkout-summary{padding:18px 22px}.checkout-summary ul,.checkout-security{display:none}.checkout-summary h2{font-size:23px}.checkout-summary .checkout-amount{font-size:28px}.checkout-summary .notice{margin:12px 0 0}.checkout-payment{padding:16px}}

@@ -3,12 +3,14 @@ import {useEffect,useState} from 'react';
 import {plans} from '../lib/plans.mjs';
 import {syncNow} from '../lib/account-storage.mjs';
 import Account from './account';
+import EmbeddedCheckout from './embedded-checkout';
 export default function PaidOffer({onExplore}){
+ const [checkout,setCheckout]=useState(null);
  const [state,setState]=useState(null),[busy,setBusy]=useState(false),[error,setError]=useState(''),[projectId,setProjectId]=useState('');
  async function refresh(){try{const r=await fetch('/api/billing',{cache:'no-store'}),d=await r.json();if(!r.ok)throw Error(d.error);setState(d);}catch(e){setError(e.message);}}
  useEffect(()=>{setProjectId(new URLSearchParams(window.location.search).get('project')||'');refresh();},[]);
- async function purchase(plan){setBusy(true);setError('');try{await syncNow();const r=await fetch('/api/billing/'+(plan==='portal'?'portal':'checkout'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({plan,projectId})}),d=await r.json();if(!r.ok)throw Error(d.error);window.location.assign(d.url);}catch(e){setError(e.message);setBusy(false);}}
- return <section className="inner-page offer-page"><span className="eyebrow">HELP THAT FITS THE JOB</span><h1>Start free. Build with a plan.</h1><p className="intro">Get useful advice first. When you’re ready, turn your idea into a project you can follow.</p>
+ async function purchase(plan){setBusy(true);setError('');try{await syncNow();const r=await fetch('/api/billing/'+(plan==='portal'?'portal':'checkout'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({plan,projectId})}),d=await r.json();if(!r.ok)throw Error(d.error);if(plan==='portal'){window.location.assign(d.url);}else{setCheckout({session:d,plan});setBusy(false);}}catch(e){setError(e.message);setBusy(false);}}
+ return <section className="inner-page offer-page">{checkout&&<EmbeddedCheckout session={checkout.session} plan={checkout.plan} projectId={projectId} onClose={()=>{setCheckout(null);refresh();}} onActivated={refresh}/>}<span className="eyebrow">HELP THAT FITS THE JOB</span><h1>Start free. Build with a plan.</h1><p className="intro">Get useful advice first. When you’re ready, turn your idea into a project you can follow.</p>
  {!state&&<p role="status">Checking your plan…</p>}{state&&!state.ready&&<p className="notice">Launch pricing preview. Checkout is not open yet; no payment will be taken.</p>}
  {state?.testMode&&<p className="notice">Sandbox checkout — available to all signed-in accounts. Test payments only; no real charges.</p>}
  {state?.ready&&new URLSearchParams(typeof window==='undefined'?'':window.location.search).get('checkout')==='returned'&&<div className="notice"><p>Your confirmed access is shown below. If your new plan is missing, refresh its status.</p><button className="secondary" onClick={refresh}>Refresh plan status</button></div>}
