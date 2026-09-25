@@ -7,6 +7,7 @@ import {projectTitle} from '../lib/journey.mjs';
 import ToolboxWorkspace from './toolbox-workspace';
 import WorkspaceBackup from './workspace-backup';
 import {mergeBackup} from '../lib/workspace-backup.mjs';
+import {normalizeManualOptions} from '../lib/guide-manuals.mjs';
 import BrandMark from './brand-mark';
 import {useState,useEffect,useRef} from 'react';
 import {projects,products,ownedChoices,merchants} from '../lib/catalog.mjs';
@@ -50,7 +51,7 @@ export default function Home(){
  }catch{setLoadError('Your workspace could not be loaded. Please retry.');}}
  useEffect(()=>{let alive=true;initializeWorkspace().then(()=>{if(alive){loadWorkspace();setReady(true);route();}}).catch(e=>{if(alive)setLoadError(e.message);});window.addEventListener('kitsley-sync',loadWorkspace);return()=>{alive=false;stopWorkspaceSync();window.removeEventListener('kitsley-sync',loadWorkspace);};},[]);
  useEffect(()=>{if(ready)try{for(const [name,key,value] of [['conversations',conversationKey,conversations],['owned','kitsley-owned',owned],['saved','kitsley-saved',saved]]){const json=JSON.stringify(value);if(persisted.current[name]!==json){workspaceStorage.setItem(key,json);persisted.current[name]=json;}}}catch{setNotice('Device storage is full or unavailable. Download a backup before leaving this page.');}},[owned,saved,conversations,ready]);
- function startConversation(request,guideId){const record=createConversation(request,crypto.randomUUID(),guideId);setConversations(rows=>[record,...rows]);navigate('/project/'+record.id);}
+ function startConversation(request,guideId,manualOptions){const record={...createConversation(request,crypto.randomUUID(),guideId),...(manualOptions?{manualOptions:normalizeManualOptions(manualOptions)}:{})};setConversations(rows=>[record,...rows]);navigate('/project/'+record.id);}
  function restoreWorkspace(backup){const stock=JSON.parse(workspaceStorage.getItem('kitsley-sheet-stock')||'[]');const ids=new Set(stock.map(s=>s.id));workspaceStorage.setItem('kitsley-sheet-stock',JSON.stringify([...stock,...backup.stock.filter(s=>!ids.has(s.id))]));setConversations(rows=>mergeBackup(rows,backup,()=>crypto.randomUUID()));setOwned(rows=>[...new Set([...rows,...backup.owned])]);window.dispatchEvent(new Event('kitsley-stock'));}
  function deleteCard(id,title,conversation=false){if(!window.confirm('Delete “'+title+'”? This removes its saved details from your workspace and synced devices. This cannot be undone.'))return;if(conversation)setConversations(rows=>rows.filter(r=>r.id!==id));else{setSaved(rows=>rows.filter(r=>r.id!==id));try{workspaceStorage.removeItem('kitsley-plan-'+id);}catch{}}setNotice('Project deleted.');}
  function updateConversation(record){setConversations(rows=>rows.map(r=>r.id===record.id?record:r));}
@@ -82,7 +83,7 @@ export default function Home(){
  </div><aside className="project-aside"><div className="guide-card"><span className="guide-avatar"><BrandMark/></span><h3>A little help, right here.</h3><p>Ask about your next step, material, finish, or essential tools.</p><form onSubmit={ask}><label className="sr-only" htmlFor="question">Ask about this plan</label><input id="question" value={question} onChange={e=>setQuestion(e.target.value)} placeholder="What should I do next?" maxLength={1000}/><button className="primary" disabled={!question.trim()}>Ask Kitsley<Icon/></button></form>{answer&&<p className="answer" role="status">{answer}</p>}<small>Quick answers from this guide. Start a project for tailored AI advice.</small></div><div className="budget-card"><span className="eyebrow">ESSENTIAL EQUIPMENT · EST. CAD</span><strong>C${result.estimate.min}–{result.estimate.max}</strong><p>Illustrative range, not live prices. Excludes items you already own, raw material and project quantities.</p></div></aside></div></section>}
 
  </>}
- <div hidden={view!=='library'}><Library request={libraryRequest} owned={owned} saved={saved} onSave={saveGuide} onToggleOwned={toggleOwned} onNavigate={browseGuide} onStart={p=>startConversation(p.name||p.title,p.id)} onUpdateGuide={updateGuide} onOffer={()=>go('offers')}/></div>
+ <div hidden={view!=='library'}><Library request={libraryRequest} owned={owned} saved={saved} onSave={saveGuide} onToggleOwned={toggleOwned} onNavigate={browseGuide} onStart={p=>startConversation(p.name||p.title,p.id,p.manualOptions)} onUpdateGuide={updateGuide} onOffer={()=>go('offers')}/></div>
  {view==='pack'&&ready&&packId!=='bookcase'&&<PackLibrary owned={owned} onToggleOwned={toggleOwned} id={packId} onNavigate={navigate} saved={saved} onSave={updateGuide} onGuide={browseGuide}/>}
  {view==='pack'&&ready&&packId==='bookcase'&&<BookcasePack owned={owned} onToggleOwned={toggleOwned} saved={saved} onSave={updateGuide}/>}
  {view==='offers'&&<PaidOffer onExplore={()=>navigate('/')} onNavigate={navigate} conversations={conversations}/>}

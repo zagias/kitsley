@@ -6,13 +6,13 @@ import BookcasePack from './bookcase-pack';
 import ProjectInstructions from './project-instructions';
 import ProjectSavings from './project-savings';
 import {library} from '../lib/library.mjs';
-import {contentFor} from '../lib/project-content.mjs';
+import {manualFor} from '../lib/guide-manuals.mjs';
 import {readiness} from '../lib/readiness.mjs';
 import {setupLabels} from '../lib/journey.mjs';
 import {bookcaseInput} from '../lib/conversation.mjs';
 export default function ProjectResources({record,onUpdate,onNavigate,owned,onToggleOwned,panel}){
  const [section,setSection]=useState(panel==='steps'?'guide':'brief');
- const guide=library.find(p=>p.id===record.guideId),content=guide&&contentFor(guide.id);
+ const guide=library.find(p=>p.id===record.guideId),content=guide&&manualFor(guide.id);
  let kit={items:[],blocked:true};try{if(guide)kit=readiness(guide,owned,guide.id==='planter'?'solid':'plywood');}catch{}
  const chooseReference=<label>Reference guide<select value={record.guideId||''} onChange={e=>update({guideId:e.target.value||null,instructionProgress:null})}><option value="">Choose a guide</option>{library.filter(p=>p.mode!=='urgent'&&p.category!=='safety').map(p=><option value={p.id} key={p.id}>{p.title}</option>)}</select></label>;
  const update=patch=>onUpdate({...record,...patch,updatedAt:new Date().toISOString()});
