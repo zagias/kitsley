@@ -159,3 +159,10 @@ body{background:var(--paper)}.header{background:#ffffff;border-right:1px solid v
 
 .notice{border-inline-start:3px solid var(--brand-violet);color:#35294b}
 .full-guide,.owned-tag,.manual-progress{color:var(--brand-violet-ink)}
+
+/* Spectrum edge for primary actions, echoing the Kitsley mark. */
+.primary,.art-caption button{position:relative;isolation:isolate;overflow:hidden;transition:box-shadow .18s ease,background-color .18s ease}
+.primary:not(:disabled)::before,.art-caption button:not(:disabled)::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:linear-gradient(180deg,#6250ff 0%,#9237ef 48%,#df329c 78%,#ff654d 100%);pointer-events:none}
+.primary:hover:not(:disabled),.art-caption button:hover:not(:disabled){box-shadow:0 0 0 1px #a46af266,0 4px 16px #7c3aed26}
+.primary:focus-visible,.art-caption button:focus-visible{outline:3px solid #a879ed;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.primary,.art-caption button{transition:none}}
