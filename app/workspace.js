@@ -57,7 +57,7 @@ export default function Home(){
  function browseGuide(request={},replace=false){openLibrary(request,replace);}
  function openLibrary(request={},replace=false){const {id,...filters}=request;const params=new URLSearchParams(Object.entries(filters).filter(([k,v])=>v&&v!=='all'&&k!=='nonce'));navigate((id?'/guides/'+id:'/library')+(params.size?'?'+params:''),replace);}
  function resume(p){if(p.planningPack){navigate('/packs/'+p.id);return;}if(p.pack){navigate('/packs/bookcase');return;}if(!p.result){openLibrary({id:p.id,material:p.material});return;}navigate('/plan/'+p.id+'?'+new URLSearchParams({material:p.result.material,finish:p.result.finish||'none'}));setResult(refreshOwnership(p.result,owned));setDone(p.done);setTab('kit');setAnswer('');setTimeout(()=>results.current?.scrollIntoView({behavior:'smooth'}),100);}
- function go(v){navigate({home:'/',tools:'/toolbox',saved:'/projects',urgent:'/urgent',offers:'/offers'}[v]||'/');}
+ function go(v){if(v==='offers'&&view==='conversation'){navigate('/offers?project='+encodeURIComponent(conversationId));return;}navigate({home:'/',tools:'/toolbox',saved:'/projects',urgent:'/urgent',offers:'/offers'}[v]||'/');}
  function choose(p,m=material){navigate('/plan/'+p.id+'?material='+(p.id==='planter'?'solid':m));setResult(null);setTimeout(()=>form.current?.scrollIntoView({behavior:'smooth',block:'center'}),50);}
  function updateGuide(p,patch){setSaved(s=>{const previous=s.find(x=>x.id===p.id)||{id:p.id,done:[],at:new Date().toISOString()};return [{...previous,...patch},...s.filter(x=>x.id!==p.id)];});}
  function saveGuide(p){setSaved(s=>s.some(x=>x.id===p.id)?s:[{id:p.id,done:[],at:new Date().toISOString()},...s]);setNotice('Guide saved in My projects.');}
