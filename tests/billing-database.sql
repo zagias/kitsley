@@ -1,3 +1,4 @@
+do $$ begin if not has_table_privilege('service_role','public.account_workspaces','SELECT') then raise exception 'Billing server cannot verify project ownership'; end if; end $$;
 -- Run only against a disposable database after billing migration + auth/workspace fixture.
 -- Assertions execute in a rollback transaction; no production accounts are used.
 begin;

@@ -1,3 +1,5 @@
+-- Billing verifies project ownership with the server role.
+grant select on public.account_workspaces to service_role;
 -- Apply after account workspace migration. Billing tables are server-only.
 create table if not exists public.billing_accounts (
  user_id uuid primary key references auth.users(id) on delete cascade,
