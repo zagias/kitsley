@@ -1,0 +1,1 @@
+export default function BrandMark({className=''}){return <svg className={'kitsley-mark '+className} viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M10 9V27M10 37V55M20 9V27M20 37V55M28 27L46 9M55 14L37 32L55 50M28 37L46 55" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/></svg>}

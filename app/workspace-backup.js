@@ -1,0 +1,10 @@
+'use client';
+import {useState} from 'react';
+import {makeBackup,validateBackup} from '../lib/workspace-backup.mjs';
+import {downloadFile} from './project-deliverable';
+export default function WorkspaceBackup({conversations,owned,onRestore}){
+ const [pending,setPending]=useState(null),[message,setMessage]=useState('');
+ function backup(){try{const stock=JSON.parse(localStorage.getItem('kitsley-sheet-stock')||'[]');downloadFile(makeBackup(conversations,owned,stock),'application/json','kitsley-workspace-backup.json');setMessage('Backup downloaded. Keep it somewhere private; it contains your project notes.');}catch{setMessage('The workspace could not be exported.');}}
+ async function read(e){const file=e.target.files?.[0];if(!file)return;try{if(file.size>2_000_000)throw Error('Choose a backup smaller than 2 MB.');setPending(validateBackup(await file.text()));setMessage('');}catch(err){setMessage(err.message);}e.target.value='';}
+ return <details className="project-detail"><summary>Back up or move your projects</summary><p>Download project conversations, toolbox ownership and plywood stock. Import on another browser without an account. Older saved guides and legacy designs are not included.</p><div className="backup-actions"><button className="secondary" onClick={backup}>Download backup</button><label className="secondary">Choose a backup<input type="file" accept="application/json,.json" onChange={read}/></label></div>{pending&&<div className="quantity-note"><p>{pending.conversations.length} projects, {pending.owned.length} owned tools and {pending.stock.length} stock entries found. Existing projects will remain; matching project IDs are imported as copies.</p><button className="primary" onClick={()=>{try{onRestore(pending);setPending(null);setMessage('Backup imported. Existing projects were kept.');}catch(e){setMessage(e.message);}}}>Import these projects</button><button className="text-button" onClick={()=>setPending(null)}>Cancel</button></div>}{message&&<p role="status">{message}</p>}</details>;
+}

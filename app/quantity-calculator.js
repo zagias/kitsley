@@ -1,0 +1,6 @@
+'use client';
+import {useState} from 'react';
+import {calculatorFor,calculatorFields,calculateQuantity} from '../lib/quantity-calculators.mjs';
+export default function QuantityCalculator({id,values={},onChange}){const [submitted,setSubmitted]=useState(false);const type=calculatorFor(id);if(!type)return null;let result,error;if(submitted)try{result=calculateQuantity(type,values);}catch(e){error=e.message;}
+ return <details className="project-detail"><summary>Work out what to buy</summary><p>Use actual measurements and the selected product’s label. All fields are required; enter 0 where nothing applies.</p><form onSubmit={e=>{e.preventDefault();setSubmitted(true);}}><div className="quantity-fields">{calculatorFields[type].map(([key,label,max])=><label key={key}>{label}<input type="number" required min="0" max={max} step="any" value={values[key]??''} onChange={e=>onChange({...values,[key]:e.target.value})}/></label>)}</div><button className="secondary">Calculate quantity</button></form>{error&&<p role="alert">{error}</p>}{result&&<div className="quantity-result" role="status"><strong>{result.containers} {result.unit}</strong><p>{result.litres!==undefined?`${result.litres} litres calculated`:`${result.orderArea} m² including allowance`} · {result.area} m² area</p><p className="small">{result.formula}</p><p>{result.note}</p></div>}</details>;
+}

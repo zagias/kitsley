@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {starterKit,toolGroup,toolGroups,refreshOwnership} from '../lib/toolbox.mjs';
+import {products} from '../lib/catalog.mjs';
+import {recommend} from '../lib/engine.mjs';
+import {closestGuides} from '../lib/library.mjs';
+test('Starter kit includes hammer and pliers; every item has one known group',()=>{assert.ok(starterKit.includes('claw-hammer')&&starterKit.includes('pliers'));for(const id of starterKit)assert.ok(products.some(p=>p.id===id));for(const p of products)assert.ok(toolGroups.some(([id])=>id===toolGroup(p)));for(const id of ['glue','screws'])assert.equal(toolGroup(products.find(p=>p.id===id)),'supplies');});
+test('Ownership refresh retains plan details and recalculates essential budget in both directions',()=>{const plan=recommend({projectId:'cabinet-doors',material:'plywood',finish:'none',owned:[]},products);const updated=refreshOwnership(plan,['saw']);const saw=plan.items.find(p=>p.id==='saw');assert.equal(updated.estimate.min,plan.estimate.min-saw.min);assert.equal(updated.ownedCount,1);assert.equal(plan.ownedCount,0);assert.deepEqual(refreshOwnership(updated,[]),plan);});
+test('No-result fallback gives three suggestions and does not invent a category',()=>{const result=closestGuides('xyzzy');assert.equal(result.guides.length,3);assert.equal(result.category,null);const door=closestGuides('sticking door');assert.equal(door.guides[0].id,'sticking-door');assert.equal(door.category,'doors');});
+test('Fallback recognizes a near spelling and suggests its likely category',()=>{const result=closestGuides('stikc');assert.equal(result.guides[0].id,'sticking-door');assert.equal(result.category,'doors');});

@@ -1,0 +1,5 @@
+import {authClient,authConfig,sameOrigin} from '../../../lib/auth.mjs';
+export const dynamic='force-dynamic';
+const response=(body,status=200)=>Response.json(body,{status,headers:{'Cache-Control':'private, no-store'}});
+export async function GET(){const c=authConfig();if(!c.configured)return response({user:null,providers:c.providers});try{const client=await authClient();const {data:{user}}=await client.auth.getUser();return response({user:user?{id:user.id,name:user.user_metadata?.full_name||user.user_metadata?.name||'Your account'}:null,providers:c.providers});}catch{return response({error:'Account information is temporarily unavailable.',user:null,providers:c.providers},503);}}
+export async function POST(request){if(!sameOrigin(request))return response({error:'Request not allowed.'},403);try{const client=await authClient();if(!client)return response({error:'Sign-in is not available in this preview yet.'},503);const {error}=await client.auth.signOut();if(error)throw error;return response({ok:true});}catch{return response({error:'Could not sign out. Please try again.'},503);}}

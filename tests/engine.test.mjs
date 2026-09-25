@@ -1,0 +1,15 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {recommend} from '../lib/engine.mjs';
+import {projects,products} from '../lib/catalog.mjs';
+import {guides} from '../lib/guides.mjs';
+import {advisor} from '../lib/advisor.mjs';
+import {validLink,validateInput} from '../lib/validation.mjs';
+const input={description:'Build cabinet doors',projectId:'cabinet-doors',material:'mdf',finish:'paint',owned:[]};
+test('All project plans resolve catalog items and have actionable steps',()=>{for(const p of projects){const r=recommend({...input,projectId:p.id,material:'solid'},products);assert.ok(r.items.length>0);assert.ok(guides[p.id].length>=4);assert.ok(r.items.every(p=>p.name&&p.description));}});
+test('Owned equipment is retained for context but excluded from buying estimate',()=>{const all=recommend(input,products);const owned=recommend({...input,owned:['saw','drill']},products);assert.equal(owned.estimate.min,all.estimate.min-products.find(p=>p.id==='saw').min-products.find(p=>p.id==='drill').min);assert.equal(owned.ownedCount,2);});
+test('Safety cannot be disabled or commercially downgraded',()=>{const catalog=products.map(p=>({...p,enabled:p.id!=='extractor'}));const r=recommend(input,catalog,{'cabinet-doors':{extractor:'optional',eye:'optional'}});assert.equal(r.items.find(p=>p.id==='extractor').tier,'essential');assert.equal(r.items.find(p=>p.id==='eye').tier,'essential');});
+test('MDF outdoors is rejected',()=>{assert.throws(()=>recommend({...input,projectId:'planter'},products),/MDF is not suitable/);});
+test('Ambiguous requests do not silently become a random project',async()=>{assert.equal(await advisor.interpret('repair my sink'),null);assert.equal(await advisor.interpret('build and paint MDF cabinet doors'),'cabinet-doors');assert.equal(await advisor.interpret('paint my cabinets'),'paint-cabinets');assert.equal(await advisor.interpret('build a bookshelf'),'bookcase');});
+test('Retailer redirects reject credential URLs and lookalike domains',()=>{assert.ok(validLink('https://www.amazon.ca/dp/example','amazon'));for(const url of ['https://www.amazon.ca.evil.com/a','https://user@www.amazon.ca/a','javascript:alert(1)','http://www.amazon.ca/a','https://www.amazon.ca:8080/a'])assert.equal(validLink(url,'amazon'),false);});
+test('Malformed inputs fail before recommendations',()=>{assert.throws(()=>validateInput({...input,owned:['fake']}));assert.throws(()=>validateInput({...input,finish:'fake'}));assert.throws(()=>validateInput({...input,description:'x'.repeat(2001)}));});

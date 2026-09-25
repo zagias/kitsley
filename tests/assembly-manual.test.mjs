@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {design,defaults,packHTML} from '../lib/bookcase.mjs';import {manualSteps,stepDrawing} from '../lib/assembly-manual.mjs';
+test('manual uses configured shelf count and bottom datum measurements',()=>{const d=design({...defaults,height:1200,shelves:3});const s=manualSteps(d);assert.match(s[0].parts,/C × 3/);assert.match(s[3].body,/295.5, 591, 886.5 mm/);assert.match(stepDrawing(d,3),/886.5 mm/);});
+test('all six steps export with illustrations and conditional fastening limits',()=>{const html=packHTML(design(defaults));for(let i=1;i<=6;i++)assert.match(html,new RegExp(`aria-label="Step ${i}:`));assert.match(html,/Combination square/);assert.match(html,/Brad nailer/);assert.match(html,/not the structural joint method/);assert.match(html,/not a drilling position/);});
