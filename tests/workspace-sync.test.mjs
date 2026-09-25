@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {diff,equal,mergeChanges,validateEntities,flatten} from '../lib/workspace-sync.mjs';
+const uid=()=> 'recovered';
+test('JSONB key ordering does not produce phantom edits',()=>assert(equal({a:1,b:{c:2,d:3}},{b:{d:3,c:2},a:1})));
+test('independent device edits are retained',()=>{const base={'tool:hammer':'hammer'},local={...base,'tool:drill':'drill'},remote={...base,'stock:wood':{id:'wood',qty:2}};assert.deepEqual(mergeChanges(base,local,remote,uid).merged,{...remote,'tool:drill':'drill'});});
+test('deleted server records do not return from unchanged offline device',()=>{const base={'saved:x':{id:'x',done:[]}};assert.deepEqual(mergeChanges(base,base,{'saved:x':null},uid).merged,{'saved:x':null});});
+test('delete versus offline edit preserves recovery but keeps deletion',()=>{const base={'saved:x':{id:'x',done:[]}},local={'saved:x':{id:'x',done:[1]}};const r=mergeChanges(base,local,{'saved:x':null},uid);assert.equal(r.merged['saved:x'],null);assert.deepEqual(r.merged['recovery:recovered'].local,local['saved:x']);});
+test('simultaneous edits retain both conflicting versions',()=>{const r=mergeChanges({'saved:x':{id:'x',done:[]}}, {'saved:x':{id:'x',done:[1]}},{'saved:x':{id:'x',done:[2]}},uid);assert.deepEqual(r.merged['recovery:recovered'].remote.done,[2]);assert.deepEqual(r.merged['saved:x'].done,[1]);});
+test('tombstones and recovery records are not repeatedly deleted',()=>assert.deepEqual(diff({'saved:x':null,'recovery:x':{key:'x'}},{}),{}));
+test('validation rejects invalid identifiers and shape',()=>{assert.throws(()=>validateEntities({'__proto__:x':1}));assert.throws(()=>validateEntities({'conversation:x':{id:'y'}}));assert.throws(()=>validateEntities({'saved:x':{id:'x'}}));assert.throws(()=>validateEntities({'tool:x':'y'}));});
+test('valid complete workspace includes designs, tools, stock and recovery',()=>{const x={'conversation:x':{version:1,id:'x',request:'test',messages:[],answers:{}},'saved:a':{id:'a',done:[],pack:{input:{width:720}}},'stock:s':{id:'s',qty:2},'tool:hammer':'hammer','draft:bookcase':{result:{}},'recovery:x':{local:{},remote:{}}};assert.equal(validateEntities(x),x);});
+test('flatten includes drafts and preferences without account metadata',()=>{const values={'kitsley-conversations-v1':'[]','kitsley-owned':'["hammer"]','kitsley-plan-bookcase':'{"done":[1]}','kitsley-offer-choice-v1':'plus','unrelated':'secret'};assert.deepEqual(flatten({getItem:k=>values[k],length:5,key:i=>Object.keys(values)[i]}),{'tool:hammer':'hammer','draft:bookcase':{done:[1]},'preference:kitsley-offer-choice-v1':'plus'});});

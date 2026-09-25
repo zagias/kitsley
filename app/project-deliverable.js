@@ -1,4 +1,5 @@
 'use client';
+import {workspaceStorage} from '../lib/account-storage.mjs';
 import {useEffect,useState} from 'react';
 import {exportProject,shoppingRows,shoppingCSV,projectChecks,gardenQuantities} from '../lib/project-pack.mjs';
 import {contentFor} from '../lib/project-content.mjs';
@@ -7,7 +8,7 @@ import {merchants} from '../lib/catalog.mjs';
 export function downloadFile(contents,type,name){const url=URL.createObjectURL(new Blob([contents],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 export default function ProjectDeliverable({record,items,owned,onUpdate}){
  const [stock,setStock]=useState([]),[error,setError]=useState(''),[showOwned,setShowOwned]=useState(false);
- useEffect(()=>{const read=()=>{try{const data=JSON.parse(localStorage.getItem('kitsley-sheet-stock')||'[]');if(Array.isArray(data))setStock(data);}catch{setError('Saved material stock could not be loaded.');}};read();window.addEventListener('kitsley-stock',read);window.addEventListener('storage',read);return()=>{window.removeEventListener('kitsley-stock',read);window.removeEventListener('storage',read);};},[]);
+ useEffect(()=>{const read=()=>{try{const data=JSON.parse(workspaceStorage.getItem('kitsley-sheet-stock')||'[]');if(Array.isArray(data))setStock(data);}catch{setError('Saved material stock could not be loaded.');}};read();window.addEventListener('kitsley-stock',read);window.addEventListener('storage',read);return()=>{window.removeEventListener('kitsley-stock',read);window.removeEventListener('storage',read);};},[]);
  let rows=[],garden,calculationError='';try{rows=shoppingRows(record,items,owned,stock);garden=gardenQuantities(record);}catch(e){calculationError=e.message;}
  const pack=packLibrary.find(p=>p.id===record.guideId),checks=projectChecks(record),missing=rows.filter(r=>!r.owned&&r.qty>0),shown=showOwned?rows:missing;
  function output(kind){try{downloadFile(kind==='csv'?shoppingCSV(rows):exportProject(record,items,owned,stock),kind==='csv'?'text/csv;charset=utf-8':'text/html;charset=utf-8',`kitsley-${record.guideId||'project'}-${kind==='csv'?'shopping.csv':'draft.html'}`);}catch(e){setError(e.message);}}

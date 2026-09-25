@@ -1,4 +1,5 @@
 'use client';
+import SyncStatus from './sync-status';
 import {useEffect,useRef,useState} from 'react';
 import BrandMark from './brand-mark';
 export default function AIProjectIntake({record,onUpdate,onNavigate,onGuided}){
@@ -17,7 +18,7 @@ export default function AIProjectIntake({record,onUpdate,onNavigate,onGuided}){
  useEffect(()=>{if(!started.current){started.current=true;if(!record.messages.length)ask();}},[]);
  const discovery=record.discovery;
  const developed=discovery?.briefReady===true&&record.briefConfirmed===true;
- return <section className="conversation-workspace focused-conversation"><div className="conversation-heading"><div><span className="entry-kicker">LET’S SHAPE YOUR PROJECT</span><h1>{record.title||record.request}</h1></div><span className="local-save">Saved on this device</span></div>
+ return <section className="conversation-workspace focused-conversation"><div className="conversation-heading"><div><span className="entry-kicker">LET’S SHAPE YOUR PROJECT</span><h1>{record.title||record.request}</h1></div><span className="local-save"><SyncStatus/></span></div>
  <div className="ai-intake-thread">{record.messages.map((m,i)=><div key={i} className={m.role==='assistant'?'latest-project-reply':'conversation-user'}>{m.role==='assistant'&&<BrandMark/>}<p style={{whiteSpace:'pre-wrap'}}>{m.content}</p></div>)}{busy&&<p role="status">Kitsley is working out your next step…</p>}</div>
  {error&&<div role="alert"><p className="error">{error}</p><button className="secondary" disabled={busy} onClick={()=>ask(text.trim()||undefined)}>Try again</button></div>}
  {discovery?.choices?.length>0&&!busy&&<div className="reply-options" aria-label="Suggested replies">{discovery.choices.map(choice=><button key={choice} onClick={()=>ask(choice)}>{choice}</button>)}</div>}
