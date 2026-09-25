@@ -1,3 +1,4 @@
+import {isAppOrigin} from '../../../lib/request-origin.mjs';
 import {mutateStore} from '../../../lib/store.mjs';
 import {contentFor} from '../../../lib/project-content.mjs';
 import {contentSources} from '../../../lib/content-sources.mjs';
@@ -7,7 +8,7 @@ export const runtime='nodejs';
 const enabled=()=>!!(process.env.OPENAI_API_KEY&&process.env.OPENAI_MODEL&&process.env.KITSLEY_AI_ENABLED==='true');
 export async function GET(){return Response.json({enabled:enabled()},{headers:{'Cache-Control':'no-store'}});}
 export async function POST(request){
- const origin=request.headers.get('origin');if(!origin||origin!==new URL(request.url).origin)return Response.json({error:'Please use the Kitsley project workspace.'},{status:403});
+ if(!isAppOrigin(request))return Response.json({error:'Please use the Kitsley project workspace.'},{status:403});
  if(!enabled())return Response.json({error:'Live AI is not connected. Guided project questions still work.'},{status:503});
  let input;try{const raw=await request.text();if(raw.length>16000)throw Error();input=JSON.parse(raw);if(!Array.isArray(input.messages)||input.messages.length>12||input.messages.some(m=>!['user','assistant'].includes(m.role)||typeof m.content!=='string'||m.content.length>2000))throw Error();}catch{return Response.json({error:'Please keep your question shorter.'},{status:400});}
  if(urgentIntent(input.messages.filter(m=>m.role==='user').map(m=>m.content).join(' ')))return Response.json({text:'Keep clear of the hazard and use Urgent help now. For immediate danger, leave and contact your local emergency service from a safe place.',urgent:true});
