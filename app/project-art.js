@@ -1,1 +1,39 @@
-export default function ProjectArt(){return <svg viewBox="0 0 560 570" role="img" aria-label="A bookcase taking shape, with shelves, clamps and a measuring square"><rect width="560" height="570" rx="12" fill="#e7eff6"/><path d="M0 390L560 190V570H0Z" fill="#c9dae8"/><circle cx="460" cy="95" r="48" fill="#fff" opacity=".8"/><g stroke="#182c3f" strokeWidth="3" strokeLinejoin="round"><path d="M130 160L322 120L322 438L130 480Z" fill="#ecb87c"/><path d="M130 160L148 169L148 489L130 480Z" fill="#b97840"/><path d="M322 120L338 130L338 450L322 438Z" fill="#b97840"/><path d="M225 197L417 154L431 162L240 207Z" fill="#ffe1b4"/><path d="M240 207L431 162V178L240 224Z" fill="#b97840"/><path d="M170 295L361 253L396 273L206 316Z" fill="#ffe1b4"/><path d="M206 316L396 273V289L206 332Z" fill="#b97840"/><path d="M170 396L361 354L396 374L206 417Z" fill="#ffe1b4"/><path d="M206 417L396 374V390L206 433Z" fill="#b97840"/><path d="M385 220L406 229L406 482L385 469Z" fill="#b97840"/><path d="M406 229L433 221V474L406 482Z" fill="#f2c18c"/></g><g stroke="#315f96" strokeWidth="2" fill="none" strokeDasharray="6 7"><path d="M165 177L220 197M341 134L404 158M379 221L379 476"/></g><g transform="translate(53 395) rotate(-12)"><path d="M0 0H19V89H87V108H0Z" fill="#263c50"/><path d="M26 25H40V66H73V80H26Z" fill="#729cb8"/><path d="M5 15H15M5 30H15M5 45H15M5 60H15M5 75H15M25 96V105M40 96V105M55 96V105M70 96V105" stroke="white" strokeWidth="2"/></g><g transform="translate(425 350) rotate(16)"><rect x="0" y="0" width="12" height="117" rx="4" fill="#314457"/><path d="M-20 8H42V27H18V76H42V94H-20V76H0V27H-20Z" fill="#e88249"/><rect x="25" y="68" width="9" height="59" rx="4" fill="#192d40"/><rect x="16" y="119" width="27" height="35" rx="7" fill="#192d40"/></g><g fill="#182c3f" fontFamily="system-ui" fontSize="13"><text x="35" y="40" letterSpacing="2">FROM YOUR IDEA</text><text x="350" y="535" letterSpacing="2">TO YOUR SPACE</text></g><g transform="translate(44 75)"><rect width="146" height="47" rx="24" fill="white"/><circle cx="24" cy="24" r="10" fill="#315f96"/><path d="m19 24 4 4 7-8" stroke="white" strokeWidth="2" fill="none"/><text x="43" y="29" fontSize="14" fontFamily="system-ui" fill="#17252f">Made to fit you</text></g></svg>;}
+'use client';
+
+import { useId } from 'react';
+
+export default function ProjectArt() {
+  const accent = useId();
+  return <svg viewBox="0 0 560 480" role="img" aria-label="Exploded bookcase design in light natural wood, with a measuring square, clamp and colourful dimension guides">
+    <defs>
+      <linearGradient id={accent} x1="80" y1="420" x2="470" y2="60" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#2563EB"/><stop offset=".4" stopColor="#7C3AED"/><stop offset=".7" stopColor="#DB2777"/><stop offset="1" stopColor="#F97316"/>
+      </linearGradient>
+    </defs>
+    <rect width="560" height="480" fill="#f7f7f8"/>
+    <g fontFamily="system-ui" fill="#52525b"><text x="30" y="36" fontSize="11" letterSpacing="1.8">PROJECT PREVIEW</text><text x="530" y="36" textAnchor="end" fontSize="11">01 / BOOKCASE</text></g>
+    <ellipse cx="293" cy="432" rx="159" ry="13" fill="#e9e9ed"/>
+    <g stroke="#414047" strokeWidth="1.5" strokeLinejoin="round" transform="translate(0 -10)">
+      <path d="M145 145L302 111V385L145 420Z" fill="#ead3af"/>
+      <path d="M145 145L159 152V427L145 420Z" fill="#c7a77d"/>
+      <path d="M302 111L316 119V394L302 385Z" fill="#d3b58e"/>
+      <path d="M215 161L383 124L416 143L247 181Z" fill="#f5e6ce"/>
+      <path d="M247 181L416 143V155L247 194Z" fill="#d3b58e"/>
+      <path d="M189 252L356 215L390 234L222 272Z" fill="#f5e6ce"/>
+      <path d="M222 272L390 234V246L222 285Z" fill="#d3b58e"/>
+      <path d="M189 337L356 300L390 319L222 357Z" fill="#f5e6ce"/>
+      <path d="M222 357L390 319V331L222 370Z" fill="#d3b58e"/>
+      <path d="M386 204L404 214V427L386 416Z" fill="#c7a77d"/>
+      <path d="M404 214L428 207V420L404 427Z" fill="#ead3af"/>
+      <g stroke="#bfa27c" strokeWidth=".65" opacity=".5"><path d="M175 168V395M181 190V354M281 137V373M410 230V398" fill="none"/></g>
+    </g>
+    <g stroke={`url(#${accent})`} strokeWidth="1.5" fill="none">
+      <path d="M116 132V410M110 132H122M110 410H122M153 446L430 446M153 440V452M430 440V452"/>
+      <path d="M169 149L211 166M320 112L377 129M375 215V407" strokeDasharray="4 6" opacity=".7"/>
+      <circle cx="116" cy="132" r="3" fill="#f7f7f8"/><circle cx="430" cy="446" r="3" fill="#f7f7f8"/>
+    </g>
+    <g transform="translate(322 64)"><rect width="194" height="34" rx="17" fill="white" stroke="#e4e4e7"/><path d="m14 17 4 4 7-8" fill="none" stroke="#7C3AED" strokeWidth="1.7" strokeLinecap="round"/><text x="35" y="22" fill="#3f3f46" fontSize="12" fontFamily="system-ui">Sized for your space</text></g>
+    <g transform="translate(58 335) rotate(-9)" stroke="#52525b" strokeWidth="1.4" strokeLinejoin="round"><path d="M0 0H14V61H61V75H0Z" fill="#e1e1e5"/><path d="M4 12H10M4 24H10M4 36H10M4 48H10M22 65V71M34 65V71M46 65V71"/></g>
+    <g transform="translate(462 310) rotate(12)"><rect x="0" width="6" height="102" rx="2" fill="#71717a"/><path d="M-14 9H22V21H7V65H22V77H-14V65H0V21H-14Z" fill="#d9d9df" stroke="#52525b" strokeWidth="1.4"/><rect x="15" y="65" width="5" height="34" rx="2" fill="#52525b"/><rect x="11" y="94" width="13" height="24" rx="4" fill="#7C3AED"/></g>
+  </svg>;
+}
