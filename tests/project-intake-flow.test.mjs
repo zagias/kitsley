@@ -21,3 +21,8 @@ test('free allowance only counts current-month server ledger and applies account
 test('basement work starts as planning rather than a flooding emergency',()=>{
  const r=beginSetup({...project,request:'frame my basement'});assert.match(r.messages[0].content,/finished basement/);assert.match(setupQuestion(r).choices[0],/Frame/);
 });
+
+test('named projects ask for a useful detail instead of repeating the original request',()=>{
+ assert.equal(setupQuestion(beginSetup({...project,request:'Build a bookcase'})).text,'What will it need to hold?');
+ assert.equal(setupQuestion(beginSetup({...project,request:'Build a new cabinet'})).text,'What kind of cabinet do you want?');
+});

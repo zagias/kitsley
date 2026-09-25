@@ -3,6 +3,9 @@ import {syncNow} from '../lib/account-storage.mjs';
 import SyncStatus from './sync-status';
 import {useEffect,useRef,useState} from 'react';
 import AIProjectIntake from './ai-project-intake';
+import ProjectHome from './project-home';
+export {default as ProjectEntry} from './project-home';
+import ProjectResources from './project-resources';
 import ProjectArt from './project-art';
 import ProjectDeliverable from './project-deliverable';
 import ProjectInstructions from './project-instructions';
@@ -17,7 +20,7 @@ import {packLibrary} from '../lib/pack-library.mjs';
 import {readiness} from '../lib/readiness.mjs';
 import {nextQuestion,questionsFor,applyAnswer,nextAction,bookcaseInput,urgentIntent} from '../lib/conversation.mjs';
 
-export function ProjectEntry({onStart,onUrgent,aiEnabled,conversations=[],onResume}){
+function LegacyProjectEntry({onStart,onUrgent,aiEnabled,conversations=[],onResume}){
  const [text,setText]=useState('');
  const seen=new Set();
  const recent=[...conversations].filter(r=>!r.archived&&r.request?.trim()).sort((a,b)=>(Date.parse(b.createdAt)||0)-(Date.parse(a.createdAt)||0)).filter(r=>{const key=r.request.trim().toLowerCase();if(seen.has(key))return false;seen.add(key);return true;}).slice(0,3);
@@ -45,7 +48,8 @@ export default function ProjectConversation({record,onUpdate,onNavigate,owned,on
  try{const response=await (await syncNow(),fetch('/api/conversation',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({projectId:record.id,guideId:record.guideId,messages:[{role:'user',content:record.request},...messages.slice(-10)]})}));const data=await response.json();if(!response.ok)throw Error(data.error);if(alive.current){update({messages:[...messages,{role:'assistant',content:data.text}],urgent:!!data.urgent});setText('');}}catch(e){if(alive.current)setError(e.message);}finally{if(alive.current)setBusy(false);}
  }
  const candidates=!guide?searchLibrary({query:record.request}).slice(0,3):[];
- if(aiEnabled&&!record.urgent&&!guided&&panel==='conversation')return <AIProjectIntake key={record.id} record={record} onUpdate={onUpdate} onNavigate={onNavigate} onGuided={()=>setGuided(true)}/>;
+ if(!record.urgent&&panel==='conversation')return <AIProjectIntake key={record.id} record={record} onUpdate={onUpdate} onNavigate={onNavigate} aiEnabled={aiEnabled}/>;
+ if(!record.urgent)return <ProjectResources key={record.id+panel} record={record} onUpdate={onUpdate} onNavigate={onNavigate} panel={panel} owned={owned} onToggleOwned={onToggleOwned}/>;
  return <section className="conversation-workspace focused-conversation"><div className="conversation-heading"><div><span className="entry-kicker">YOUR PROJECT</span><h1>{record.title||guide?.title||'Let’s work out the details'}</h1></div><span className="local-save"><SyncStatus/></span></div><div className="conversation-layout"><div className="conversation-main">
  {panel==='steps'?<><button className="text-button" onClick={()=>setPanel('conversation')}>← Back to project</button><ProjectInstructions key={record.id} record={record} onUpdate={update}/><button className="secondary" onClick={()=>setPanel('plan')}>Tools, quantities & download →</button></>:panel==='conversation'?<><p className="project-request">{record.request}</p>
 
