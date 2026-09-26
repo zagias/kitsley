@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {diff,equal,mergeChanges,validateEntities,flatten} from '../lib/workspace-sync.mjs';
+import {diff,equal,mergeChanges,validateEntities,flatten,compatibleWorkspace} from '../lib/workspace-sync.mjs';
 const uid=()=> 'recovered';
 test('JSONB key ordering does not produce phantom edits',()=>assert(equal({a:1,b:{c:2,d:3}},{b:{d:3,c:2},a:1})));
 test('independent device edits are retained',()=>{const base={'tool:hammer':'hammer'},local={...base,'tool:drill':'drill'},remote={...base,'stock:wood':{id:'wood',qty:2}};assert.deepEqual(mergeChanges(base,local,remote,uid).merged,{...remote,'tool:drill':'drill'});});
@@ -11,3 +11,11 @@ test('tombstones and recovery records are not repeatedly deleted',()=>assert.dee
 test('validation rejects invalid identifiers and shape',()=>{assert.throws(()=>validateEntities({'__proto__:x':1}));assert.throws(()=>validateEntities({'conversation:x':{id:'y'}}));assert.throws(()=>validateEntities({'saved:x':{id:'x'}}));assert.throws(()=>validateEntities({'tool:x':'y'}));});
 test('valid complete workspace includes designs, tools, stock and recovery',()=>{const x={'conversation:x':{version:1,id:'x',request:'test',messages:[],answers:{}},'saved:a':{id:'a',done:[],pack:{input:{width:720}}},'stock:s':{id:'s',qty:2},'tool:hammer':'hammer','draft:bookcase':{result:{}},'recovery:x':{local:{},remote:{}}};assert.equal(validateEntities(x),x);});
 test('flatten includes drafts and preferences without account metadata',()=>{const values={'kitsley-conversations-v1':'[]','kitsley-owned':'["hammer"]','kitsley-plan-bookcase':'{"done":[1]}','kitsley-offer-choice-v1':'plus','unrelated':'secret'};assert.deepEqual(flatten({getItem:k=>values[k],length:5,key:i=>Object.keys(values)[i]}),{'tool:hammer':'hammer','draft:bookcase':{done:[1]},'preference:kitsley-offer-choice-v1':'plus'});});
+test('older open tabs cannot erase new equipment and experience collections',()=>{
+ const current={'experience:woodworking':{id:'woodworking',level:'some',source:'user',updatedAt:'2026-09-26'},'equipment:drill-1':{id:'drill-1'},'tool:drill':'drill'};
+ const older={'experience:woodworking':null,'tool:drill':null};
+ const merged=compatibleWorkspace(older,current);
+ assert.deepEqual(merged['experience:woodworking'],current['experience:woodworking']);assert.deepEqual(merged['equipment:drill-1'],current['equipment:drill-1']);assert.equal(merged['tool:drill'],null);
+ assert.equal(compatibleWorkspace(older,current,2)['experience:woodworking'],null);
+ assert.equal(compatibleWorkspace({'experience:woodworking':{...current['experience:woodworking'],level:'beginner'}},current)['experience:woodworking'].level,'beginner');
+});

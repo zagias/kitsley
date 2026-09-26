@@ -43,10 +43,22 @@ This verifies routing, evidence boundaries and software behavior; it does not va
 - The temporary live QA project was archived after verification. The user's existing projects were not edited.
 - Plain-answer reuse excludes design proposals, preventing a cached “ready to preview” response without its context-bound operation. Mocked route tests verify one model call, current dimensions, no old chat and no research tools for this interpreter.
 
-## Pending next release — companion profiles and drawing readability
+## Released c1edd301 — companion profiles and drawing readability
 
 - 206 automated tests pass, including profile validation, independent domain sync, backup compatibility, tool/experience cache invalidation and unchanged safety decisions.
 - Production build passes.
 - Local browser: saved a specific sprayer with unknown variant/accessory details; setup for cabinet refinishing reused woodworking experience and separately requested finishing experience. Equipment/profile entry uses no model call.
 - Shelf depth review opens at the top and visibly compares full-depth and recessed top-down outlines. Cut parts preserve physical aspect ratios; fractional inches retain exact metric references.
 - This release adds no independent language model, automatic shared-knowledge publication or background training service.
+
+## Prepared release — useful guest help and controlled personal learning
+
+- 217 automated tests pass and production build succeeds. Guest GFCI regression returns a relevant free first step and guide, without repeating supplied facts. Unknown trip frequency asks one focused question. Hazards retain their existing restrictions.
+- Browser: free GFCI guide opens without sign-in. Generic category questions are skipped when the request already names the task.
+- My toolbox is now My kit throughout app copy and exports; /kit is canonical and old /toolbox links still work. Experience is under Account → My DIY profile, with /toolbox?section=experience resolving to /profile. No storage keys or user records are renamed.
+- Browser: experience selection survives navigation and full reload through the old link. Mocked account sync verifies persistence after initialization and a separate device’s change. Legacy clients cannot erase equipment/experience fields they cannot represent.
+- Completion reviews record the actual work and owned/borrowed/rented/provided tool relationships. No tool ownership or experience is inferred from ticking steps alone. Promotions to “Some hands-on experience” require explicit confirmation; no expert downgrade or cross-trade promotion.
+- Browser: completed the five-step cabinet-painting test project, confirmed finishing practice, an owned screwdriver and a borrowed brush. Only the screwdriver was added to My kit; finishing updated with confirmation; woodworking and electrical choices stayed unchanged. Practice count persisted in the separate profile.
+- Practice is derived from saved project reviews, account-scoped, carried into AI context and backups. Copied projects do not multiply evidence. Corrections remain available in the completed project. This is user-reported practice, not certification or verified physical success.
+- Privacy/terms drafts are retained under drafts/policies, not published with placeholder business/contact details. These routes remain outstanding until that information is supplied.
+- Independent language-model training and autonomous publication of new shared technical rules are not part of this release.
