@@ -12,3 +12,5 @@ Apply this policy across the application, not only to the bookcase.
 8. Automatic adaptation may use existing reviewed instructions and calculated values. Novel construction, fastener, load or safety claims need source checking and review before global publication.
 
 Current implementation: exact project-answer reuse; conservative guide intents for all stored manuals; bookcase-specific calculated answers; account-persisted topic counts; admin summary across up to 500 workspaces. This is retrieval and application logic, not a newly trained model. Anonymous usage is local until signed in; no cross-user personalized answer sharing or autonomous publication of novel building methods.
+
+Automatic shared learning: approved question templates are ranked by recurring topic after at least three projects ask about that topic. Their answers are generated from each recipient’s current guide and specifications, never copied from another person’s answer. Rankings refresh every five minutes; no private text or counts are returned by the public endpoint. This changes discovery, not construction facts.
