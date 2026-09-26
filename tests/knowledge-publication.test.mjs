@@ -5,10 +5,10 @@ import {foundationAnswer,foundationKnowledge,foundationContext,findFoundation} f
 import {trustedKnowledgeUrl} from '../lib/knowledge-policy.mjs';
 const items=JSON.parse(fs.readFileSync(new URL('../knowledge/approved.json',import.meta.url))),now=Date.parse('2026-09-26T23:59:00Z'),sample=()=>structuredClone(items[0].record);
 test('reviewed content and generated runtime catalog cannot diverge',()=>{
- const compiled=compileKnowledge(items,{now});assert.equal(compiled.entries.length,52);
+ const compiled=compileKnowledge(items,{now});assert.equal(compiled.entries.length,55);
  assert.equal(fs.readFileSync(new URL('../lib/managed-knowledge.mjs',import.meta.url),'utf8'),renderKnowledgeModule(compiled));
  for(const i of items)assert.deepEqual(validatePublication(i,{now}),[],i.record.id);
- assert.equal(foundationKnowledge.length,119);
+ assert.equal(foundationKnowledge.length,122);
 });
 test('altered content, conflicts, invented sources and missing fact support cannot publish',()=>{
  const changed=structuredClone(items[0]);changed.record.facts[0]='Use an arbitrary setting';assert(validatePublication(changed,{now}).includes('Content changed since review'));
