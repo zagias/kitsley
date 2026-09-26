@@ -2,6 +2,7 @@ import {sameOrigin,authConfig} from '../../../../lib/auth.mjs';
 import {billingUser,billingAccountAllowed,billingTestMode,billingDB,billingReply,checkoutReady,ownsProject,grantsFor} from '../../../../lib/billing.mjs';
 import {plans,liveGrants} from '../../../../lib/plans.mjs';
 import {stripe} from '../../../../lib/stripe.mjs';
+import {checkoutCustomer} from '../../../../lib/checkout-customer.mjs';
 import {embeddedSession} from '../../../../lib/checkout-session.mjs';
 export async function POST(request){
  if(!sameOrigin(request))return billingReply({error:'Request not allowed.'},403);
@@ -18,7 +19,7 @@ export async function POST(request){
   if(!price.active||price.currency!=='cad'||price.unit_amount!==plans[body.plan].cents||(body.plan==='plus'?price.recurring?.interval!=='month'||price.recurring?.interval_count!==1:!!price.recurring))throw Error('Price mismatch');
   const {data:slot,error}=await db.rpc('reserve_checkout',{owner:user.id,checkout_scope:body.plan==='plus'?'plus':'project:'+body.projectId});if(error)throw error;
   const {data:account,error:accountError}=await db.from('billing_accounts').select('customer_id').eq('user_id',user.id).single();if(accountError)throw accountError;
-  const customer=account.customer_id?{id:account.customer_id}:await stripe('customers',{'metadata[kitsley_user]':user.id},'kitsley-customer-'+user.id);
+  const customer=await checkoutCustomer(stripe,account.customer_id,user);
   const {error:saveError}=await db.from('billing_accounts').update({customer_id:customer.id}).eq('user_id',user.id);if(saveError)throw saveError;
   if(body.plan==='plus'){
    const existing=await stripe('subscriptions?customer='+encodeURIComponent(customer.id)+'&status=all&limit=100');
