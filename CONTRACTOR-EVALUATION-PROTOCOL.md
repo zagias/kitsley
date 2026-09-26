@@ -42,3 +42,7 @@ The jurisdiction context supplies checked official research leads, retains munic
 `node scripts/contractor-compare.mjs 0 1` runs the same case with the configured app model and GPT-6 Astra. Set `KITSLEY_BENCHMARK_MODEL` only to another explicitly chosen, available GPT-6 model. The script checks access first and refuses a silent substitute. Increase count up to six for at most twelve model calls; results remain awaiting review, never automatic passes. Capture stdout in the evaluation archive before terminating a one-off dyno.
 
 On 26 September 2026, the API account listed `gpt-6-astra`, `gpt-6-sol` and `gpt-6-luna`. GPT-6 Astra was successfully called in a cabinet probe. The production model remained `gpt-4.1-mini`.
+
+## Expanded development cases — 26 September
+
+The development bank now includes plumbing, electrical, HVAC, drywall, doors, waterproofing, flooring, maintenance, renovation and outdoor connections alongside the original six areas. These are development probes, not unseen qualification cases. Each pair runs concurrently (two model requests maximum at a time), while cases remain sequential. The application model is unchanged. Full raw assessments are retained to diagnose why useful advice is lost during presentation. A passing single clarification does not establish complete-job competence.

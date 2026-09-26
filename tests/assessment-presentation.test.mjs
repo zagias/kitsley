@@ -11,3 +11,14 @@ test('a claimed finding without retrieved evidence is not surfaced as establishe
  const result=engineDecision({record:{},question:'Can this shelf carry books?',raw,research,result:{text:'Safe for any load.'}});
  assert.doesNotMatch(result.text,/safely|Safe for any load/);assert.match(result.text,/What will this support/);assert.equal(result.engine.phase,'needs-checking');assert.deepEqual(result.stepUpdates,[]);
 });
+test('unknown cabinet mounting retains useful scoped guidance without approving fixings',()=>{
+ const raw={technicalAssessment:{checks:[{topic:'assembly',finding:'Unknown mounting arrangement',status:'needs-details',urls:[]}]}};
+ const result=engineDecision({question:'My Ontario wall leans 12 mm over the cabinet height. Should I pull it square using longer screws?',raw,research,result:{text:'Install a rail now.',stepUpdates:[{step:1,text:'Mount rail'}]}});
+ assert.match(result.text,/do not pull it out of shape/);assert.match(result.text,/How is this cabinet supported/);assert.match(result.text,/do not establish the fixings/);assert.doesNotMatch(result.text,/Install a rail now/);assert.deepEqual(result.stepUpdates,[]);assert.equal(result.engine.phase,'needs-checking');
+});
+test('cabinet diagnostic does not replace unrelated electrical or known follow-up questions',()=>{
+ for(const question of ['My outlet is hot. Can I pull it from the wall?','It is a floor-standing cabinet with bracket model 123. What now?']){
+  const result=engineDecision({question,raw:{technicalAssessment:{checks:[]}},research,result:{text:'Unverified'}});
+  assert.doesNotMatch(result.text,/How is this cabinet supported/);
+ }
+});
