@@ -41,3 +41,10 @@ test('sources and assessment survive backup without becoming shared published kn
  const r={...record,technicalAssessment:assessment,messages:[{role:'assistant',content:'Check coating',source:'ai',research,technicalAssessment:assessment}],stepAdvice:{0:{text:'Keep existing parts',question:'What next?',designKey:'abc',research}}};
  const restored=validateBackup(makeBackup([r],[],[])).conversations[0];assert.equal(restored.messages[0].research.sources[0].url,research.sources[0].url);assert.equal(restored.technicalAssessment.checks.length,assessmentTopics.length);assert.equal(restored.stepAdvice[0].research.sources[0].url,research.sources[0].url);
 });
+
+test('an unresolved assessment cannot present model confidence or a proceed-anyway choice as approval',()=>{
+ const raw={technicalAssessment:{summary:'These cutting and glue methods are fine.',question:'Should we proceed with these methods?',choices:['Proceed with current methods','Wait for identification'],checks:[{topic:'material',status:'needs-details',finding:'Use an unverified adhesive now.',urls:[]}]}};
+ const result={text:'Use an unverified adhesive now.',discovery:{advice:'Use it now.',briefReady:true,question:'Proceed?',choices:['Proceed']},stepUpdates:[]};
+ const d=engineDecision({record:{request:'A foamboard craft'},question:'Check the method',raw,result,research:{...research,status:'needs-details',sources:[]}});
+ assert.doesNotMatch(d.text,/Use an unverified/);assert.equal(d.discovery.briefReady,false);assert.equal(d.technicalAssessment.choices.length,0);assert.match(d.technicalAssessment.question,/label/);assert.doesNotMatch(d.technicalAssessment.checks[0].finding,/adhesive now/);assert.equal(d.engine.phase,'needs-checking');
+});
