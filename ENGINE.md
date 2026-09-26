@@ -54,3 +54,7 @@ These registered operations are reusable application knowledge. They are not evi
 ## Bounded AI design interpretation
 
 Explicit interior-depth requests that exceed the local phrase parser use one small structured interpretation call. The model identifies the shelf number, operation, quantity and units from the latest request and current saved model; older assistant prose is excluded. Kitsley converts units, computes the new depths and runs the same compiler. It does not ask the model to write new build steps or load claims. Product/method questions remain on the source-research path. A missing or malformed interpretation leaves the saved design unchanged. Design-operation responses never enter the plain-answer cache.
+
+## Planned Future Projects Agent
+
+[FUTURE-PROJECTS-AGENT.md](FUTURE-PROJECTS-AGENT.md) defines the next persistent research-and-planning companion across the app, WhatsApp, SMS and email. It will use this engine's knowledge and supported capabilities, save findings to the appropriate project sections, and re-evaluate dependent decisions as information changes. Channel transport cannot bypass revision checks, evidence requirements, ownership or entitlements. Implementation stages are tracked in [ROADMAP.md](ROADMAP.md); this is planned work, not an enabled background agent.
