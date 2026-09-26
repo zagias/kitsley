@@ -31,6 +31,12 @@ test('an unverified research note cannot leak a product specification into curre
  const e=researchEvidence(data,raw,{required:true});assert.doesNotMatch(e.note,/4.76|proceed/);
  assert.doesNotMatch(savedResearch({...raw,sources:[]}).note,/4.76|proceed/);
 });
+test('source comparison ignores attribution tokens but preserves product and version identity',()=>{
+ const base='https://manufacturer.example/manual?model=WC6001';
+ const searched={output:[{type:'web_search_call',status:'completed',action:{sources:[{url:base+'&utm_source=search&srsltid=tracking'}]}}]};
+ assert.equal(researchEvidence(searched,{status:'supported',urls:[base]},{required:true}).status,'supported');
+ assert.equal(researchEvidence(searched,{status:'supported',urls:['https://manufacturer.example/manual?model=W1001']},{required:true}).status,'limited');
+});
 test('unresolved research cannot overwrite saved steps or become a reusable AI answer',()=>{
  const record={id:'test',guideId:'bookcase',messages:[],pack:{build:{key:'design'}},stepAdvice:{0:{text:'Existing guidance'}}};
  for(const status of ['conflicting','limited','needs-details']){
