@@ -1,4 +1,5 @@
 'use client';
+import {conversationMessages} from '../lib/bookcase-ai-context.mjs';
 import {syncNow} from '../lib/account-storage.mjs';
 import {beginSetup,answerSetup,setupQuestion,setupFlow,freeAllowance} from '../lib/project-intake-flow.mjs';
 import {setupLabels} from '../lib/journey.mjs';
@@ -30,14 +31,14 @@ export default function AIProjectIntake({record,onUpdate,onNavigate,aiEnabled=tr
   lock.current=true;setBusy(true);pendingAnswer.current=answer;
   const messages=[...record.messages,{role:'user',content:answer}];
   try{
-   await syncNow();const response=await fetch('/api/conversation',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({projectId:record.id,guideId:record.guideId,intake:true,briefConfirmed:record.briefConfirmed===true,messages:[{role:'user',content:record.request},...(workshop?[{role:'user',content:'My saved Kitsley bookcase design (mm): '+JSON.stringify({dimensions:record.pack.input,method:'Fixed pocket-screwed shelves, 6 mm applied back, exposed plywood front edges',options:record.pack.build.options,currentStep:record.pack.build.active+1})+'. Help with this existing design; do not restart project setup. Explain any proposed changes before changing its scope.'}]:[]),...(record.setup?[{role:'user',content:('My project setup: '+JSON.stringify(record.setup.answers)).slice(0,2000)}]:[]),...messages.slice(-10)].map(({role,content})=>({role,content}))})});
+   await syncNow();const response=await fetch('/api/conversation',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({projectId:record.id,guideId:record.guideId,intake:true,briefConfirmed:record.briefConfirmed===true,workshop:workshop?{input:record.pack.input,build:record.pack.build}:undefined,messages:conversationMessages(record,messages)})});
    const data=await response.json();if(!response.ok){setPlanRequired(data.code==='plan_required');setSignInNeeded(data.code==='sign_in');throw Error(data.error||'Please try again.');}
    if(alive.current){setPaid(['plus','project-pass'].includes(data.plan));if(Number.isInteger(data.freeRemaining))setRemaining(data.freeRemaining);onUpdate({...record,messages:[...messages,{role:'assistant',content:data.text,source:'ai'}],urgent:!!data.urgent,discovery:data.discovery||null,briefConfirmed:data.discovery?false:record.briefConfirmed,updatedAt:new Date().toISOString()});setText('');setCustom(false);refreshAllowance();focusStep();}
   }catch(e){if(alive.current)setError(e.message);}finally{lock.current=false;if(alive.current)setBusy(false);}
  }
  const offer=()=>onNavigate('/offers?project='+encodeURIComponent(record.id));
- const choices=setupActive?q.choices:discovery?.briefReady?[]:discovery?.choices;
- const question=setupActive?q.text:record.briefConfirmed?'What would you like help with next?':discovery?.briefReady?'Does this describe your project?':discovery?.question;
+ const choices=setupActive?q.choices:workshop?[]:discovery?.briefReady?[]:discovery?.choices;
+ const question=setupActive?q.text:workshop?null:record.briefConfirmed?'What would you like help with next?':discovery?.briefReady?'Does this describe your project?':discovery?.question;
  const showComposer=!busy&&!exhausted&&!readyForAdvice&&!(signInNeeded||signedIn===false&&!setupActive)&&(!choices?.length||custom)&&(aiEnabled||setupActive);
  return <section className="project-page conversation-page"><ProjectHeader record={record} onNavigate={onNavigate} bookcaseHelp={workshop}/>
  <div className="next-step-surface">
