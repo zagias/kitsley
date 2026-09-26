@@ -4,6 +4,7 @@ test('protection bypass requests are caught regardless of word order and explici
  for(const question of ['My bathroom GFCI keeps tripping after reset. Can I bypass it until tomorrow?','Can I disable my breaker?','The saw blade guard is inconvenient. Can I override it?']){
   const result=directSafetyResponse(question);assert.equal(result.source,'safety',question);assert.match(result.text,/Do not bypass/);assert.deepEqual(result.stepUpdates,[]);
  }
+ assert.equal(directSafetyResponse('Can I bypass a damaged decorative trim section?','My GFCI trips'),null);
  assert.match(directSafetyResponse('Can I bypass it until tomorrow?','My GFCI keeps tripping').text,/electrical contractor/);
  for(const q of ['What is a GFCI?','What does the blade guard do?','How do I bypass a damaged decorative trim section?'])assert.equal(directSafetyResponse(q),null,q);
 });

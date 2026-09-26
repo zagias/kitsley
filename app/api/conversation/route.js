@@ -1,3 +1,4 @@
+import {compatibilityReply} from '../../../lib/method-compatibility.mjs';
 import {advicePurpose} from '../../../lib/advice-purpose.mjs';
 import {localScopeResponse,scopeReply} from '../../../lib/diy-scope.mjs';
 import {companionInstructions,cleanCompanion} from '../../../lib/companion-profile.mjs';
@@ -26,6 +27,7 @@ export async function POST(request){
  if(urgentIntent(input.messages.filter(m=>m.role==='user').map(m=>m.content).join(' ')))return Response.json({text:'Keep clear of the hazard and use Urgent help now. For immediate danger, leave and contact your local emergency service from a safe place.',urgent:true});
  const question=input.messages.filter(m=>m.role==='user').at(-1)?.content||'';
  const safetyReply=directSafetyResponse(question,input.messages.filter(m=>m.role==='user').slice(-3).map(m=>m.content).join(' '));if(safetyReply)return Response.json(safetyReply,{headers:{'Cache-Control':'no-store'}});
+ const compatibility=compatibilityReply(question);if(compatibility)return Response.json(compatibility,{headers:{'Cache-Control':'no-store'}});
  const local=foundationAnswer(question);if(local)return Response.json(local,{headers:{'Cache-Control':'no-store'}});
  const scopeLocal=localScopeResponse(question,{messages:input.messages});if(scopeLocal)return Response.json(scopeLocal,{headers:{'Cache-Control':'no-store'}});
  const diagnostic=feasibilityQuestion({guideId:input.guideId},question);if(diagnostic)return Response.json(diagnostic,{headers:{'Cache-Control':'no-store'}});
