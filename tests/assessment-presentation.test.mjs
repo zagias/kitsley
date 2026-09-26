@@ -22,3 +22,12 @@ test('cabinet diagnostic does not replace unrelated electrical or known follow-u
   assert.doesNotMatch(result.text,/How is this cabinet supported/);
  }
 });
+test('independent established facts survive unresolved method checks without exposing raw procedure',()=>{
+ const raw={technicalAssessment:{missingFact:'joint_type',establishedPrinciples:[{text:'A washer-sealed slip joint seals at its washer, not with cement on its threads.',urls:[url]}],checks:[{topic:'joining',status:'needs-details',finding:'Actual connection needs confirmation.',urls:[url]}]}};
+ const d=engineDecision({question:'Should I cement the threads?',raw,research,result:{text:'Apply cement now.',stepUpdates:[{step:1,text:'Apply cement'}]}});
+ assert.match(d.text,/seals at its washer/);assert.match(d.text,/nut-and-washer/);assert.doesNotMatch(d.text,/Apply cement now/);assert.deepEqual(d.stepUpdates,[]);assert.equal(d.engine.phase,'needs-checking');
+});
+test('unretrieved principle sources do not bypass evidence checks',()=>{
+ const raw={technicalAssessment:{establishedPrinciples:[{text:'Use any screw for any load.',urls:['https://invented.example/test']}],checks:[]}};
+ const d=engineDecision({raw,research,result:{text:'Unverified instructions'}});assert.doesNotMatch(d.text,/any screw/);assert.deepEqual(d.technicalAssessment.establishedPrinciples,[]);
+});
