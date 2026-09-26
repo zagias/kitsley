@@ -48,3 +48,8 @@ test('an unresolved assessment cannot present model confidence or a proceed-anyw
  const d=engineDecision({record:{request:'A foamboard craft'},question:'Check the method',raw,result,research:{...research,status:'needs-details',sources:[]}});
  assert.doesNotMatch(d.text,/Use an unverified/);assert.equal(d.discovery.briefReady,false);assert.equal(d.technicalAssessment.choices.length,0);assert.match(d.technicalAssessment.question,/label/);assert.doesNotMatch(d.technicalAssessment.checks[0].finding,/adhesive now/);assert.equal(d.engine.phase,'needs-checking');
 });
+
+test('unknown compatibility asks for evidence instead of asking the user to approve a tool',()=>{
+ const a=technicalAssessment({question:'Should I use the Logan tools for this 5 mm board?',choices:['Yes','No','Unsure'],checks:[{topic:'material',finding:'Board is unidentified.',status:'needs-details',urls:[]}]},{...research,status:'needs-details',sources:[]});
+ assert.deepEqual(a.choices,[]);assert.match(a.question,/label or purchase listing/);assert.equal(a.stage,'needs-checking');
+});
