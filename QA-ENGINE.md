@@ -62,3 +62,14 @@ This verifies routing, evidence boundaries and software behavior; it does not va
 - Practice is derived from saved project reviews, account-scoped, carried into AI context and backups. Copied projects do not multiply evidence. Corrections remain available in the completed project. This is user-reported practice, not certification or verified physical success.
 - Privacy/terms drafts are retained under drafts/policies, not published with placeholder business/contact details. These routes remain outstanding until that information is supplied.
 - Independent language-model training and autonomous publication of new shared technical rules are not part of this release.
+
+
+## Prepared release — specialist coordination, relevant equipment details and bookcase clarity
+
+- 227 automated tests pass. Production build succeeds. New API regression verifies the full specialist registry is supplied and unresolved dependencies block generated step/design changes. Domain tests cover all fifteen areas, topic switches, missing receiving roles, circular dependencies, source mismatches and backup re-review. These are software checks, not trade competency certification.
+- Public educational answers for MERV, prehung doors, GFCI lockout, drywall tape and detector limitations work with AI disconnected and do not consume an AI allowance. Personal prescriptions remain contextual.
+- Source-backed reference expansion has scopes, required inputs and expiry gates. Admin coverage is partial across every domain; anonymous question counts identify gaps. No raw private questions appear in aggregates.
+- Browser: a screwdriver stores Robertson #2 without make/model and survives reload; the existing Wagner sprayer retains its model/accessory fields. Brand fields are optional and collapsed for ordinary hand tools. Model-sensitive exceptions retain them. Sync and backup tests preserve both record forms.
+- Browser: material choices and Width/Height/Depth expose accessible names; 2 ft, 36 and 11 3/4 update the drawing and exact cut arithmetic. The save instruction matches Use this design. Fractional ranges stay inside supported bounds. Supplier cutting excludes saw/blade/guide, and essentials/protection/optional tools have separate groups.
+- Browser and PDF: fixed cabinet sides, recessed shelf depiction, full-height wall restraint and enlarged solid-carcass attachment detail checked visually. Guide cover, cut-list page and anchor page have readable branded formatting. Fractional inches are explicitly approximate; exact mm remain for supplier cuts.
+- The specialist system is a structured workflow using the existing OpenAI model, scoped local references and source research. It is not independently trained specialist models, autonomous technical publication, universal geometry generation or contractor qualification. See DIY-KNOWLEDGE.md.

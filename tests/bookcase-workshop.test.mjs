@@ -66,3 +66,19 @@ test('Backup preserves the workshop and sanitizes stale completion after dimensi
  const restored=validateBackup(makeBackup([r],[],[])).conversations[0];assert.deepEqual(restored.pack.build,build);
  const changed={...r,pack:{...r.pack,input:{...workshopDefaults,width:620}}};assert.deepEqual(validateBackup(makeBackup([changed],[],[])).conversations[0].pack.build.done,[]);
 });
+
+test('tool priorities follow the work method without making protection optional',()=>{
+ const supplier=workshopTools({cutting:'supplier'},workshopModel());
+ assert.ok(!supplier.some(t=>['saw','blade','guide','sander'].includes(t.id)));
+ assert.ok(supplier.filter(t=>t.need==='essential').length<supplier.length);
+ assert.equal(supplier.find(t=>t.id==='workbench').need,'optional');
+ assert.match(supplier.find(t=>t.id==='extractor').note,/hand-sanding/);
+ for(const cutting of ['supplier','self']){
+  const tools=workshopTools({cutting},workshopModel());
+  for(const id of ['hearing','respirator','extractor'])assert.equal(tools.find(t=>t.id===id).need,'protection');
+  assert.match(tools.find(t=>t.id==='hearing').note,/drill/);
+ }
+ for(const id of ['saw','blade','guide'])assert.equal(workshopTools({cutting:'self'}).find(t=>t.id===id).need,'essential');
+ const rows=workshopShopping(workshopModel(),{});assert.match(rows.find(t=>t.id==='workbench').note,/Nice to have/);
+ const anchor=workshopArt(workshopModel(),'anchor');assert.match(anchor,/Full-height side view/);assert.match(anchor,/Never only the thin back/);
+});

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {inches,length,displayLength,referenceLength,parseLength,measurementText} from '../lib/units.mjs';
+import {inches,length,displayLength,referenceLength,parseLength,measurementText,lengthRange,cutMeasurementNote} from '../lib/units.mjs';
 import {workshopModel,workshopDefaults,workshopProgress} from '../lib/bookcase-workshop.mjs';
 import {workshopArt} from '../lib/bookcase-workshop-art.mjs';
 import {flatten} from '../lib/workspace-sync.mjs';
@@ -11,7 +11,7 @@ test('Imperial entry accepts fractions, feet and unicode tape-measure notation',
 });
 test('Display never substitutes nominal or rounded fractions for actual thickness',()=>{
  assert.equal(inches(19.05),'3/4');assert.equal(inches(19),'0.748');assert.equal(inches(18),'0.7087');
- assert.equal(length(609.6,'imperial'),'24 in');assert.equal(measurementText('180 grit and 18 mm board','imperial'),'180 grit and 18 mm (≈ 11/16 in) board');
+ assert.equal(length(609.6,'imperial'),'24 in');assert.equal(measurementText('180 grit and 18 mm board','imperial'),'180 grit and 18 mm (≈ 23/32 in) board');
 });
 test('Fractional imperial dimensions preserve cut geometry and unit toggles preserve progress',()=>{
  const input={...workshopDefaults,width:parseLength('24','imperial'),height:parseLength('36','imperial'),depth:parseLength('12','imperial')};
@@ -39,4 +39,20 @@ test('Readable tape fractions identify approximation and retain exact cutting re
  const d=workshopModel({...workshopDefaults,shelfInsets:[0,100]});const before=JSON.stringify(d);
  for(const p of d.parts)for(const n of [p.length,p.width,p.thickness]){displayLength(n,'imperial');referenceLength(n,'imperial');}
  assert.equal(JSON.stringify(d),before);assert.equal(d.shelfPanels[1].width,194);
+});
+
+test('readable imperial range endpoints stay inside the supported bounds',()=>{
+ for(const [min,max] of [[400,650],[600,1000],[250,350],[0,144]]){
+  const range=lengthRange(min,max,'imperial'),[lo,hi]=range.replace(' in','').split('–');
+  assert.ok(parseLength(lo,'imperial')>=min-1e-6);assert.ok(parseLength(hi,'imperial')<=max+1e-6);
+  assert.doesNotMatch(range,/\d\.\d/);
+ }
+ assert.equal(lengthRange(400,650,'imperial'),'15 3/4–25 9/16 in');
+ assert.equal(lengthRange(400,650,'metric'),'400–650 mm');
+ assert.match(cutMeasurementNote('imperial','supplier'),/Give the exact mm sizes.*supplier/);
+ assert.match(cutMeasurementNote('imperial','self'),/dual-scale/);
+ for(let mm=100;mm<=1000;mm+=7){
+  const rounded=displayLength(mm,'imperial').replace('≈ ','');
+  assert.ok(Math.abs(parseLength(rounded,'imperial')-mm)<=25.4/64+1e-6);
+ }
 });

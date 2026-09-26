@@ -1,0 +1,4 @@
+export default function KnowledgeCoverage({coverage}){
+ if(!coverage)return null;
+ return <section className="research-metrics"><h2>Knowledge coverage & review</h2><p>{coverage.current} current reference records across {coverage.domains.length} areas. These counts measure reference coverage, not contractor qualifications or model training.</p><p className="small">Earliest reference review date: {coverage.nextReview||'None'}. Question counts identify gaps; they do not publish new advice automatically.</p><table><thead><tr><th>Area</th><th>Current references</th><th>Review due</th><th>Questions</th></tr></thead><tbody>{coverage.domains.map(d=><tr key={d.id}><td><details><summary>{d.name}</summary><p>{d.status==='research-required'?'Research required.':'Partial reference coverage.'} {d.boundary}</p></details></td><td>{d.references}</td><td>{d.reviewDue}</td><td>{d.questions}</td></tr>)}</tbody></table></section>;
+}
