@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {researchEvidence,researchFormat,researchInstructions,sourceUrl,citedParts} from '../lib/advice-research.mjs';
+import {researchEvidence,researchFormat,researchInstructions,sourceUrl,citedParts,savedResearch} from '../lib/advice-research.mjs';
 import {workshopAdviceFormat,mergeStepAdvice} from '../lib/workshop-advice.mjs';
 import {rememberAnswer} from '../lib/internal-answers.mjs';
 
@@ -25,6 +25,11 @@ test('missing details do not become unsupported instructions; unsourced URLs nev
  const parts=citedParts(`See [manual](${url}) and [fake](https://invented.example/spec).`,e);
  assert.equal(parts.filter(p=>p.url).length,1);assert.equal(parts.find(p=>p.url).url,url);
  for(const bad of ['javascript:alert(1)','http://127.0.0.1/a','http://localhost/a','https://u:p@example.com','http://[::1]/a','https://example.com:9000/a'])assert.equal(sourceUrl(bad),null);
+});
+test('an unverified research note cannot leak a product specification into current or restored advice',()=>{
+ const raw={status:'needs-details',note:'Use a 4.76 mm blade and proceed.',urls:['https://invented.example/manual']};
+ const e=researchEvidence(data,raw,{required:true});assert.doesNotMatch(e.note,/4.76|proceed/);
+ assert.doesNotMatch(savedResearch({...raw,sources:[]}).note,/4.76|proceed/);
 });
 test('unresolved research cannot overwrite saved steps or become a reusable AI answer',()=>{
  const record={id:'test',guideId:'bookcase',messages:[],pack:{build:{key:'design'}},stepAdvice:{0:{text:'Existing guidance'}}};

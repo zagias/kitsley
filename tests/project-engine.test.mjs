@@ -50,6 +50,8 @@ test('an unresolved assessment cannot present model confidence or a proceed-anyw
 });
 
 test('unknown compatibility asks for evidence instead of asking the user to approve a tool',()=>{
- const a=technicalAssessment({question:'Should I use the Logan tools for this 5 mm board?',choices:['Yes','No','Unsure'],checks:[{topic:'material',finding:'Board is unidentified.',status:'needs-details',urls:[]}]},{...research,status:'needs-details',sources:[]});
+ for(const question of ['Should I use the Logan tools for this 5 mm board?','Is the tool suitable for this 5 mm board?']){
+ const a=technicalAssessment({question,choices:['Yes','No','Unsure'],checks:[{topic:'material',finding:'Board is unidentified.',status:'needs-details',urls:[]}]},{...research,status:'needs-details',sources:[]});
  assert.deepEqual(a.choices,[]);assert.match(a.question,/label or purchase listing/);assert.equal(a.stage,'needs-checking');
+ }
 });
