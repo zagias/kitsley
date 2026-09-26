@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import {beginSetup,answerSetup,setupQuestion,freeAllowance} from '../lib/project-intake-flow.mjs';
 const project={id:'p1',request:'reno bathroom',messages:[]};
 test('setup collects a brief without consuming AI replies, preserves uncertainty and resumes',()=>{
- let r=beginSetup(project);assert.match(r.messages[0].content,/current positions/);
+ let r=beginSetup(project);assert.match(r.messages[0].content,/phases/);
  assert.throws(()=>answerSetup(r,'change'),/Which option/);
- r=answerSetup(r,'The layout');assert.equal(setupQuestion(r).id,'constraint');
+ r=answerSetup(r,'Planning the layout and budget');assert.equal(setupQuestion(r).id,'constraint');
  r=answerSetup(JSON.parse(JSON.stringify(r)),'Not sure yet');
  r=answerSetup(r,'I’m new to DIY');assert.equal(setupQuestion(r),undefined);
  assert.equal(r.setup.answers.constraint,'Not sure yet');assert.equal(r.request,project.request);
@@ -25,4 +25,12 @@ test('basement work starts as planning rather than a flooding emergency',()=>{
 test('named projects ask for a useful detail instead of repeating the original request',()=>{
  assert.equal(setupQuestion(beginSetup({...project,request:'Build a bookcase'})).text,'What will it need to hold?');
  assert.equal(setupQuestion(beginSetup({...project,request:'Build a new cabinet'})).text,'What kind of cabinet do you want?');
+});
+
+test('setup uses complete task words rather than matching indoor as door or stable as table',()=>{
+ for(const request of ['Make an indoor foamboard divider','Make a stable display from foamboard']){
+  assert.equal(setupQuestion(beginSetup({...project,request})).text,'What is the main goal?');
+ }
+ assert.equal(setupQuestion(beginSetup({...project,request:'Fix two sticking doors'})).text,'What kind of door is it?');
+ assert.equal(setupQuestion(beginSetup({...project,request:'Build bookshelves'})).text,'What will it need to hold?');
 });

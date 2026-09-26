@@ -43,6 +43,13 @@ test('Vague and safety requests do not open an unrelated shopping journey',()=>{
  const r=createConversation('A sewage backup','sewage');assert.equal(r.urgent,true);assert.equal(nextQuestion(r),undefined);
 });
 
+test('loose library suggestions do not silently become the project type',()=>{
+ for(const request of ['Make a stable display from foamboard','Make a small indoor foamboard divider, identify it and choose a compatible glue','Indoor art that sticks to foamboard'])assert.equal(createConversation(request,'custom').guideId,null);
+ assert.equal(createConversation('reset gfci','maintenance').guideId,'gfci-trip');
+ assert.equal(createConversation('change HVAC filter','maintenance').guideId,'hvac-filter');
+ assert.equal(createConversation('dripping faucet','repair').guideId,'dripping-faucet');
+});
+
 test('Basement building is not silently treated as a flood; old matches are repaired',()=>{
  for(const request of ['frame my basement','build my basement','finish my basement']){
  const r=createConversation(request,'test');assert.equal(r.guideId,'basement-finishing');assert.equal(r.urgent,false);assert.match(nextQuestion(r).text,/frame walls/);
