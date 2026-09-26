@@ -16,3 +16,11 @@ The full requirements, data model, learning controls, delivery stages and accept
 | FPA-4 | Evidence-refresh jobs, reviewed shared-learning candidates, evaluation and rollback | Planned |
 
 Apply this capability across Build something, Household DIY, DIY trade work and Big projects. Channel support must not bypass account permissions, plan limits, task safeguards or supported-design boundaries. No messaging provider, background scheduler or autonomous training is enabled by adding this roadmap.
+
+## OpenAI-assisted learning and model independence
+
+Current: approved application knowledge, exact private answer reuse, deterministic geometry, private project evidence and aggregate recurring-topic counts. These are not an independently trained LLM or an automatic training pipeline.
+
+Planned: collect consented/de-identified candidate examples; use OpenAI and primary sources to propose/challenge improvements; retain provenance, applicability and expiry; review safety-critical facts; run held-out scenario and numerical regression tests; publish versioned knowledge/rule changes only after passing; support rollback. No customer conversation becomes public training material by default. Teacher-generated answers are candidates, never their own proof.
+
+Keep dataset and evaluation tooling provider-independent. OpenAI's self-serve fine-tuning availability is restricted to eligible existing customers and new jobs are scheduled to end on January 6, 2027. Do not build the roadmap around assumed access. Check current eligibility and supported alternatives before commissioning any separate fine-tuned model. Official source checked September 26, 2026: https://developers.openai.com/api/docs/deprecations#update-to-openais-self-serve-fine-tuning

@@ -58,3 +58,19 @@ Explicit interior-depth requests that exceed the local phrase parser use one sma
 ## Planned Future Projects Agent
 
 [FUTURE-PROJECTS-AGENT.md](FUTURE-PROJECTS-AGENT.md) defines the next persistent research-and-planning companion across the app, WhatsApp, SMS and email. It will use this engine's knowledge and supported capabilities, save findings to the appropriate project sections, and re-evaluate dependent decisions as information changes. Channel transport cannot bypass revision checks, evidence requirements, ownership or entitlements. Implementation stages are tracked in [ROADMAP.md](ROADMAP.md); this is planned work, not an enabled background agent.
+
+## Measurement and drawing presentation (2026-09-26)
+
+Display-only inch fractions use a marked approximation when the saved dimension is not an exact tape fraction. `inches` and canonical model values remain unchanged; display fractions are never fed back into geometry. Cut lists, shelf-depth previews and PDF tables retain the exact metric reference (up to the canonical six-decimal input precision). Thin edging never rounds to a displayed zero. The customer must not independently round every cut size, which can change fit.
+
+Shelf-depth changes are reviewed as proportional top views with a full-depth dashed reference and front-setback arrows. Flat cut pieces use one scale for both length and depth, with no decorative depth compression. The same data feeds browser and PDF illustrations. Review dialogs open at their heading, and mobile comparisons stack so each design can be read.
+
+## Shared companion profile and readable dimensions — September 2026
+
+Equipment is recorded as user-supplied make, exact model, regional/type variant and accessories; several units can belong to the same generic tool. Profiles are available from My toolbox and owned-item disclosures throughout project tool lists. Ownership remains separate from equipment identity; removed owned tools are excluded from advice context. Specifications are not automatically certified by saving a model name.
+
+Experience is self-reported separately for woodworking, finishing, plumbing, electrical, drywall, household maintenance and outdoor work. Setup presents relevant areas; the toolbox exposes all areas. Only explicit first-person experience statements can suggest a change, which requires a user click. Task completion and payment never promote experience or relax safeguards. Stored profiles affect general project advice, not only bookcases.
+
+Account workspace entities `equipment:<id>` and `experience:<area>` use the existing scoped sync and recovery protocol. Backup includes both. The server reads profile data from the authenticated account workspace before requesting model advice. Exact answer reuse includes active equipment and domain experience, so substitutions or skill changes invalidate old personal answers. This is private personalization, not LLM training or automatic shared publication.
+
+Display-only inch fractions mark rounded conversions with ≈ and retain exact metric cut sizes. Source tool/fastener specifications stay metric-first with imperial reference in parentheses. Canonical geometry is unchanged. Part drawings share a true scale in both axes. Shelf-depth revisions show top-down front setbacks, and PDF exports use the same geometry and reference dimensions.

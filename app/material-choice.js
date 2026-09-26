@@ -1,5 +1,5 @@
 'use client';
-import {length,measurementText} from '../lib/units.mjs';
+import {referenceLength as length,measurementText} from '../lib/units.mjs';
 import {useState} from 'react';
 const labels={'melamine-unknown':'Melamine-faced board',plywood:'Plywood',mdf:'MDF','melamine-mdf':'Melamine · MDF core','melamine-particleboard':'Melamine · particleboard core'};
 export default function MaterialChoice({input,onChange,units='metric'}){

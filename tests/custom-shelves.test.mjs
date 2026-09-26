@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {workshopModel,workshopDefaults,workshopProgress,workshopSteps,workshopShopping} from '../lib/bookcase-workshop.mjs';
-import {workshopArt} from '../lib/bookcase-workshop-art.mjs';
+import {workshopArt,workshopPartsLayout} from '../lib/bookcase-workshop-art.mjs';
 import {compileBookcase,compileProposal,proposalCurrent,engineDecision} from '../lib/project-engine.mjs';
 import {proposeChange} from '../lib/project-actions.mjs';
 import {commitWorkshop} from '../lib/workshop-revision.mjs';
@@ -19,7 +19,7 @@ test('shelf changes propagate through every design artifact without changing the
  assert.deepEqual([d.width,d.height,d.depth],[600,900,300]);assert.equal(d.parts.find(p=>p.id==='C2').width,194);assert.equal(d.parts.find(p=>p.id==='C1').width,294);
  assert.deepEqual(d.shelfPanels[1].holeOffsets,[25,97,169]);assert.equal(d.pocketCount,24);assert.deepEqual(d.backScrews,old.model.backScrews);assert.ok(d.area<old.model.area);
  for(const kind of ['overview','parts','layout','pockets','first-side','second-side','finish']){const a=workshopArt(d,kind,options);assert.notEqual(a,workshopArt(old.model,kind,options));assert.doesNotMatch(a,/NaN|undefined/);}
- assert.match(b.drawings.overview,/<polygon/);assert.match(b.drawings.overview,/C2: 194 mm/);assert.match(b.drawings.parts,/194 mm/);assert.match(b.drawings.steps[2],/97 mm/);
+ assert.match(b.drawings.overview,/<polygon/);assert.match(b.drawings.overview,/C2: 194 mm/);assert.match(b.drawings.parts,/564 × 194 × 18 mm/);assert.match(b.drawings.steps[2],/97 mm/);
  assert.match(b.steps[0].detail,/C2: 194 mm core depth/);assert.doesNotMatch(JSON.stringify(b.steps),/Keep every front edge flush|Keep each front edge flush|B and C all have the same length and depth/);
  assert.match(JSON.stringify(workshopShopping(d,options)),/564 × 194 × 18/);
  const current={...record,pack:commitWorkshop(pack,p.input,options,{stage:'kit'})};
@@ -80,4 +80,16 @@ test('registered depth geometry can be reviewed without invented web support; un
  for(const question of ['Make the upper shelf shallower for an aquarium','Make this a pet crate'])assert.equal(engineDecision({...base,question}).designProposal.status,'unsupported');
  const wrong={...op,changes:{shelfInsets:[0,94],material:'plywood'}};assert.equal(engineDecision({...base,raw:{designOperation:wrong}}).designProposal.status,'unsupported');
  const material={builder:'bookcase.uniform-panels.v1',target:'whole-design',changes:{material:'plywood'}};assert.equal(engineDecision({...base,raw:{designOperation:material}}).designProposal,null);
+});
+
+test('Flat cut-piece diagrams preserve both axes at the same scale',()=>{
+ for(const shelves of [1,2,3])for(const depth of [250,350]){
+  const d=workshopModel({...input,depth,shelves,shelfInsets:Array.from({length:shelves},(_,i)=>i===shelves-1?70:0)}),layout=workshopPartsLayout(d);
+  layout.rows.forEach((r,i)=>{const p=d.parts[i];assert.ok(Math.abs(r.width/r.height-p.length/p.width)<1e-9);assert.ok(r.y+r.height<layout.height-50);if(i)assert.ok(r.y>layout.rows[i-1].y+layout.rows[i-1].height);});
+ }
+});
+test('Depth review has proportional top views, full-depth references and exact labels',()=>{
+ const d=workshopModel({...input,shelfInsets:[0,100]}),svg=workshopArt(d,'shelf-depths',{units:'imperial'});
+ assert.match(svg,/LOOKING DOWN/);assert.match(svg,/stroke-dasharray/);assert.match(svg,/194 mm exact/);assert.match(svg,/100 mm exact/);assert.match(svg,/≈ 7 5\/8 in deep/);assert.doesNotMatch(svg,/7.6378|NaN|undefined/);
+ assert.notEqual(svg,workshopArt(workshopModel(input),'shelf-depths',{units:'imperial'}));
 });
