@@ -29,7 +29,7 @@ test('Raised bed intake branches safely for balcony loading and urgent intent in
 });
 test('AI endpoint stays offline without configuration and rejects other origins',async()=>{
  const old=process.env.KITSLEY_AI_ENABLED;delete process.env.KITSLEY_AI_ENABLED;
- try{assert.equal((await (await GET()).json()).enabled,false);assert.equal((await POST(new Request('http://localhost/api/conversation',{method:'POST',headers:{origin:'http://other.test'},body:'{}'}))).status,403);assert.equal((await POST(new Request('http://localhost/api/conversation',{method:'POST',headers:{origin:'http://localhost'},body:JSON.stringify({messages:[{role:'user',content:'Help plan my project'}]})}))).status,503);}finally{if(old!==undefined)process.env.KITSLEY_AI_ENABLED=old;}
+ try{assert.equal((await (await GET()).json()).enabled,false);assert.equal((await POST(new Request('http://localhost/api/conversation',{method:'POST',headers:{origin:'http://other.test'},body:'{}'}))).status,403);assert.equal((await POST(new Request('http://localhost/api/conversation',{method:'POST',headers:{origin:'http://localhost'},body:JSON.stringify({messages:[{role:'user',content:'Help plan my plywood project'}]})}))).status,503);}finally{if(old!==undefined)process.env.KITSLEY_AI_ENABLED=old;}
 });
 test('AI adapter sends bounded context, hides credentials and enforces persistent preview budget',async()=>{
  const keys=['KITSLEY_AI_ENABLED','OPENAI_API_KEY','OPENAI_MODEL','KITSLEY_AI_DAILY_LIMIT','KITSLEY_DATA_DIR'],old=Object.fromEntries(keys.map(k=>[k,process.env[k]])),originalFetch=globalThis.fetch,dir=await mkdtemp(join(tmpdir(),'kitsley-ai-'));
