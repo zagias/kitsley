@@ -1,0 +1,403 @@
+[
+  {
+    "id": "drawer-ec-clearance",
+    "domain": "cabinetry",
+    "question": "My Accuride 3832EC drawer is binding; how much clearance?",
+    "referenceId": "drawer-ec-clearance",
+    "educationalQuestion": "what clearance does the accuride 3832ec specify",
+    "mustRetainScope": "Accuride 3832EC side-mount drawers",
+    "required": [
+      "Slide model",
+      "Opening width",
+      "Drawer width",
+      "Square and parallel cabinet"
+    ]
+  },
+  {
+    "id": "drawer-ec-orientation",
+    "domain": "cabinetry",
+    "question": "Can I mount my 3832EC slides flat underneath?",
+    "referenceId": "drawer-ec-orientation",
+    "educationalQuestion": "can accuride 3832ec slides be flat mounted",
+    "mustRetainScope": "Accuride 3832EC mounting limits",
+    "required": [
+      "Slide model",
+      "Drawer width and length",
+      "Mounting orientation"
+    ]
+  },
+  {
+    "id": "drawer-ec-inset",
+    "domain": "cabinetry",
+    "question": "Where does the 3832EC slide start with an inset front?",
+    "referenceId": "drawer-ec-inset",
+    "educationalQuestion": "what inset setback does accuride 3832ec specify",
+    "mustRetainScope": "Accuride 3832EC inset-front setup",
+    "required": [
+      "Slide model",
+      "Front thickness",
+      "Inset versus overlay"
+    ]
+  },
+  {
+    "id": "mdf-shelf-deflection",
+    "domain": "cabinetry",
+    "question": "Will an 18 mm MDF shelf hold books over a one metre span?",
+    "referenceId": "mdf-shelf-deflection",
+    "educationalQuestion": "why is mdf shelf thickness alone insufficient",
+    "mustRetainScope": "EPF simply supported MDF shelves with uniformly distributed load",
+    "required": [
+      "MDF grade and stiffness",
+      "Span and supports",
+      "Load and distribution",
+      "Actual thickness"
+    ]
+  },
+  {
+    "id": "mdf-shelf-creep",
+    "domain": "cabinetry",
+    "question": "My MDF shelf was straight but has sagged after months.",
+    "referenceId": "mdf-shelf-creep",
+    "educationalQuestion": "why can an mdf shelf sag later",
+    "mustRetainScope": "EPF MDF shelf loading discussion",
+    "required": [
+      "MDF grade",
+      "Load duration",
+      "Support and reinforcement"
+    ]
+  },
+  {
+    "id": "blum-hinge-adjustment",
+    "domain": "cabinet-doors",
+    "question": "My Blum cabinet door rubs its neighbour; which adjustment?",
+    "referenceId": "blum-hinge-adjustment",
+    "educationalQuestion": "what adjustments does clip top blumotion offer",
+    "mustRetainScope": "Blum CLIP top BLUMOTION, matched hinge and mounting plate",
+    "required": [
+      "Hinge and plate IDs",
+      "Door weight",
+      "Gap and alignment"
+    ]
+  },
+  {
+    "id": "blum-hinge-depth",
+    "domain": "cabinet-doors",
+    "question": "Can I reuse my old CLIP top drilling depth for BLUMOTION?",
+    "referenceId": "blum-hinge-depth",
+    "educationalQuestion": "why check hinge boring depth separately",
+    "mustRetainScope": "Blum CLIP top BLUMOTION standard assembly page",
+    "required": [
+      "Exact hinge",
+      "Actual door thickness",
+      "Boring template"
+    ]
+  },
+  {
+    "id": "mdf-door-construction",
+    "domain": "cabinet-doors",
+    "question": "Should I route my MDF shaker door or build a separate frame?",
+    "referenceId": "mdf-door-construction",
+    "educationalQuestion": "how do routed mdf and frame-panel doors differ",
+    "mustRetainScope": "EPF MDF kitchen-door construction options",
+    "required": [
+      "MDF grade and thickness",
+      "Door style",
+      "Available tooling"
+    ]
+  },
+  {
+    "id": "mdf-door-veneer",
+    "domain": "cabinet-doors",
+    "question": "Can I sand an uneven joint flat on a veneered MDF door?",
+    "referenceId": "mdf-door-veneer",
+    "educationalQuestion": "why avoid heavy sanding on wrapped mdf fronts",
+    "mustRetainScope": "EPF wood-veneer-wrapped MDF fronts",
+    "required": [
+      "Actual veneer thickness",
+      "Joint condition",
+      "Finish"
+    ]
+  },
+  {
+    "id": "melamine-glue-scope",
+    "domain": "adhesives",
+    "question": "Can I glue melamine-faced panels together for a load-bearing shelf?",
+    "referenceId": "melamine-glue-scope",
+    "educationalQuestion": "what is titebond melamine glue intended for",
+    "mustRetainScope": "Titebond Melamine Glue, interior dry bonding",
+    "required": [
+      "Both surfaces and coatings",
+      "Exposure",
+      "Joint role"
+    ]
+  },
+  {
+    "id": "melamine-glue-timing",
+    "domain": "adhesives",
+    "question": "How long can I leave Titebond Melamine Glue before joining?",
+    "referenceId": "melamine-glue-timing",
+    "educationalQuestion": "what assembly window does titebond melamine glue list",
+    "mustRetainScope": "Titebond Melamine Glue at 70 F and 50% RH",
+    "required": [
+      "Exact product",
+      "Temperature and humidity",
+      "Assembly sequence"
+    ]
+  },
+  {
+    "id": "caulk-silicone-paint",
+    "domain": "adhesives",
+    "question": "Paint beads up over silicone; can I cover it with latex caulk?",
+    "referenceId": "caulk-silicone-paint",
+    "educationalQuestion": "why will latex caulk not stick over silicone",
+    "mustRetainScope": "DAP Canada guidance for non-paintable 100% silicone",
+    "required": [
+      "Exact sealant",
+      "Substrate",
+      "Paint system"
+    ]
+  },
+  {
+    "id": "caulk-joint-movement",
+    "domain": "adhesives",
+    "question": "My painted caulk cracks when the trim moves.",
+    "referenceId": "caulk-joint-movement",
+    "educationalQuestion": "why does three-sided caulk adhesion matter",
+    "mustRetainScope": "DAP caulk joint-design explanation",
+    "required": [
+      "Sealant product",
+      "Joint width/depth",
+      "Movement",
+      "Substrates"
+    ]
+  },
+  {
+    "id": "epoxy-cleaning",
+    "domain": "adhesives",
+    "question": "My epoxy joint failed on a waxed surface; what should I check?",
+    "referenceId": "epoxy-cleaning",
+    "educationalQuestion": "why can epoxy surface cleaning introduce contamination",
+    "mustRetainScope": "WEST SYSTEM surface preparation",
+    "required": [
+      "Substrate",
+      "Contaminant",
+      "Resin and hardener"
+    ]
+  },
+  {
+    "id": "mdf-pilot-core",
+    "domain": "fastening",
+    "question": "My MDF edge splits; is pilot size based on outside screw diameter?",
+    "referenceId": "mdf-pilot-core",
+    "educationalQuestion": "what diameter controls an mdf screw pilot",
+    "mustRetainScope": "EPF conventional screw fixing in MDF",
+    "required": [
+      "Screw core diameter",
+      "Board thickness",
+      "Face or edge",
+      "Insertion depth"
+    ]
+  },
+  {
+    "id": "mdf-screw-spacing",
+    "domain": "fastening",
+    "question": "How close to the corner can I screw into an MDF edge?",
+    "referenceId": "mdf-screw-spacing",
+    "educationalQuestion": "what screw-position guidance does epf give for mdf",
+    "mustRetainScope": "EPF general MDF screw-position guidance",
+    "required": [
+      "Board thickness",
+      "Screw size",
+      "Face or edge",
+      "Joint geometry"
+    ]
+  },
+  {
+    "id": "kreg-thread-choice",
+    "domain": "fastening",
+    "question": "Coarse or fine pocket screws for my hardwood cabinet frame?",
+    "referenceId": "kreg-thread-choice",
+    "educationalQuestion": "how does kreg choose coarse versus fine thread",
+    "mustRetainScope": "Kreg pocket-hole screw selection",
+    "required": [
+      "Receiving material",
+      "Actual thickness",
+      "Kreg jig and screw system"
+    ]
+  },
+  {
+    "id": "kreg-length-reference",
+    "domain": "fastening",
+    "question": "Can I use the 3/4-inch Kreg example for mixed thickness boards?",
+    "referenceId": "kreg-length-reference",
+    "educationalQuestion": "what screw is in kreg’s three-quarter-inch example",
+    "mustRetainScope": "Kreg equal-thickness 3/4-in pocket-hole example",
+    "required": [
+      "Actual thickness of both pieces",
+      "Joint configuration",
+      "Jig model"
+    ]
+  },
+  {
+    "id": "toggle-load-context",
+    "domain": "fastening",
+    "question": "Can four SNAPTOGGLE anchors hold four times the package load?",
+    "referenceId": "toggle-load-context",
+    "educationalQuestion": "why is an anchor package rating not a fixture rating",
+    "mustRetainScope": "TOGGLER SNAPTOGGLE technical bulletin",
+    "required": [
+      "Exact anchor",
+      "Wall layers and condition",
+      "Load direction and offset",
+      "Fixture requirements"
+    ]
+  },
+  {
+    "id": "gf-hp-coat-schedule",
+    "domain": "finishing",
+    "question": "When can I sand and recoat General Finishes High Performance?",
+    "referenceId": "gf-hp-coat-schedule",
+    "educationalQuestion": "what recoat checks apply to gf high performance",
+    "mustRetainScope": "General Finishes High Performance, interior applications",
+    "required": [
+      "Exact finish",
+      "Substrate and previous coat",
+      "Temperature/humidity"
+    ]
+  },
+  {
+    "id": "gf-hp-white-paint",
+    "domain": "finishing",
+    "question": "Should I put High Performance clear coat over white cabinets?",
+    "referenceId": "gf-hp-white-paint",
+    "educationalQuestion": "why does gf warn about clear coat over white paint",
+    "mustRetainScope": "General Finishes High Performance over white/light paint",
+    "required": [
+      "Paint and topcoat IDs",
+      "Existing finish",
+      "Wood species"
+    ]
+  },
+  {
+    "id": "epoxy-blush-prep",
+    "domain": "finishing",
+    "question": "There is a waxy film on cured epoxy before painting.",
+    "referenceId": "epoxy-blush-prep",
+    "educationalQuestion": "how does west system remove amine blush",
+    "mustRetainScope": "WEST SYSTEM cured epoxy preparation",
+    "required": [
+      "Resin/hardener",
+      "Cure state",
+      "Next coating"
+    ]
+  },
+  {
+    "id": "mdf-edge-grit",
+    "domain": "finishing",
+    "question": "What grit removes router marks on my raw MDF edge?",
+    "referenceId": "mdf-edge-grit",
+    "educationalQuestion": "what grit does epf describe for raw mdf edges",
+    "mustRetainScope": "EPF machined MDF edge preparation",
+    "required": [
+      "Raw edge condition",
+      "Profile",
+      "Finish-system instructions"
+    ]
+  },
+  {
+    "id": "mdf-edge-sealer",
+    "domain": "finishing",
+    "question": "Why do MDF edges keep drinking up my primer?",
+    "referenceId": "mdf-edge-sealer",
+    "educationalQuestion": "why does an mdf edge need a compatible sealer",
+    "mustRetainScope": "EPF MDF edge sealing and finishing",
+    "required": [
+      "Exact sealer and topcoat",
+      "MDF grade",
+      "Application method"
+    ]
+  },
+  {
+    "id": "flexio-runs-diagnosis",
+    "domain": "finishing",
+    "question": "My FLEXiO 3500 lays down thick runs; is the pressure wrong?",
+    "referenceId": "flexio-runs-diagnosis",
+    "educationalQuestion": "what can cause a heavy flexio spray pattern",
+    "mustRetainScope": "Wagner FLEXiO 2500/3500, Form 2423938D",
+    "required": [
+      "Exact model/nozzle",
+      "Coating",
+      "Observed pattern",
+      "Current settings"
+    ]
+  },
+  {
+    "id": "flexio-light-pattern",
+    "domain": "finishing",
+    "question": "My FLEXiO 3500 finish is light and splotchy.",
+    "referenceId": "flexio-light-pattern",
+    "educationalQuestion": "what can cause a light flexio spray pattern",
+    "mustRetainScope": "Wagner FLEXiO 2500/3500, Form 2423938D",
+    "required": [
+      "Exact model/nozzle",
+      "Coating",
+      "Current settings",
+      "Test pattern"
+    ]
+  },
+  {
+    "id": "mdf-cutting-tool",
+    "domain": "materials",
+    "question": "Why is my MDF cutting rough with a dull saw blade?",
+    "referenceId": "mdf-cutting-tool",
+    "educationalQuestion": "why use carbide cutters for mdf",
+    "mustRetainScope": "EPF sawing MDF guidance",
+    "required": [
+      "Saw and blade compatibility",
+      "Board thickness",
+      "Cut quality",
+      "Support and extraction"
+    ]
+  },
+  {
+    "id": "mdf-veneered-breakout",
+    "domain": "materials",
+    "question": "Why does the veneer break out under the MDF when cutting?",
+    "referenceId": "mdf-veneered-breakout",
+    "educationalQuestion": "why is a scoring saw used for veneered mdf",
+    "mustRetainScope": "EPF production cutting of veneered MDF",
+    "required": [
+      "Panel facing",
+      "Machine configuration",
+      "Blade",
+      "Required good face"
+    ]
+  },
+  {
+    "id": "mdf-dust-capture",
+    "domain": "materials",
+    "question": "Can I just clean MDF dust from the room after sanding?",
+    "referenceId": "mdf-dust-capture",
+    "educationalQuestion": "why capture mdf dust at the tool",
+    "mustRetainScope": "EPF MDF machining dust-control guidance",
+    "required": [
+      "Tool extraction arrangement",
+      "Extractor specification",
+      "Material SDS",
+      "Work area"
+    ]
+  },
+  {
+    "id": "diablo-material-match",
+    "domain": "materials",
+    "question": "Can my Diablo D0760A finishing blade cut metal too?",
+    "referenceId": "diablo-material-match",
+    "educationalQuestion": "what materials is diablo d0760a listed for",
+    "mustRetainScope": "Diablo D0760A product specification",
+    "required": [
+      "Saw diameter/arbor/speed compatibility",
+      "Exact blade",
+      "Material"
+    ]
+  }
+]

@@ -80,3 +80,11 @@ This verifies routing, evidence boundaries and software behavior; it does not va
 Added 22 scoped primary-source references (86 total), operator research/validation/review/compile/revocation workflow, digest checks, exact-question collision checks, expiry and publication metadata. Candidate search provenance is retained. A real manufacturer temperature discrepancy remains quarantined.
 
 Validation: 234 tests passed; production build passed including generated-catalog parity check. Research API behavior was verified with mocked Responses output; no live paid research call was run in this release. No recurring research job or autonomous publication is enabled. Ordinary query words no longer displace relevant technical references.
+
+## Contractor capability benchmark and six-area expansion — 26 September 2026
+
+Added 30 scoped primary-source references (116 total; 52 managed), with 30 scenario retrieval/exact-answer boundary checks. Benchmark six requested domains against complete tasks expected of a contractor with 10 years of relevant experience; do not derive expertise percentages from record counts. The report explicitly separates reference retrieval, supported workflows, unseen live-model reasoning and independent trade/field validation.
+
+Fixed named wood-finishing intake so “explain how to finish plywood” receives relevant starting help and asks about finish/surface/exposure, not the known task. Browser verification on the production build at localhost:3025 confirmed the specific first-step content and finish choices with no sign-in. General request routing beyond this bounded finishing recognizer remains to be evaluated.
+
+Validation: 267 tests pass; production build passes. No live model evaluation, fine-tuning, autonomous source refresh or independent trade certification was performed in this batch. See CONTRACTOR-CAPABILITY-REPORT.md for explicit gaps and next assessments.
