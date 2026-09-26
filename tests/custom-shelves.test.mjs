@@ -40,6 +40,8 @@ test('ambiguous requests clarify; width, top-panel, and unsupported shape change
  for(const text of ['Make the upper interior shelf 100 mm less wide','Make the upper interior shelf 100 mm deep','Make the upper interior shelf 400 mm deep','Make a tapered side to fit a leaning wall','Make the top panel 100 mm less deep'])assert.ok(proposeChange(record,text).unsupported,text);
  assert.ok(proposeChange(record,'Make the top shelf 100 mm shallower').clarification);
  assert.ok(proposeChange(record,'Make the upper interior shelf shallower').clarification);
+ assert.deepEqual(proposeChange(record,'Make the lower interior shelf 40 mm shallower than the upper shelf').input.shelfInsets,[40,0]);
+ assert.ok(proposeChange(record,'Using 18 mm MDF, make the upper interior shelf 200 mm deep').clarification);
  assert.equal(proposeChange(record,'Make the upper interior shelf 4 inches shallower').input.shelfInsets[1],101.6);
  assert.equal(proposeChange(record,'Make the upper interior shelf 3 1/2 inches shallower').input.shelfInsets[1],88.9);
  assert.equal(proposeChange(record,'Make the upper interior shelf 3-1/2 inches shallower').input.shelfInsets[1],88.9);
