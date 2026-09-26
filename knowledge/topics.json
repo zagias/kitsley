@@ -1,0 +1,77 @@
+[
+  {
+    "id": "cabinetry-foundation",
+    "domain": "cabinetry",
+    "question": "Cabinet carcass joinery: board thickness, joint systems, supported spans and when engineering is needed."
+  },
+  {
+    "id": "cabinet-doors-foundation",
+    "domain": "cabinet-doors",
+    "question": "Cabinet doors and drawers: hardware-specific boring, clearances, dimensions and weight constraints."
+  },
+  {
+    "id": "electrical-foundation",
+    "domain": "electrical",
+    "question": "Household GFCI and AFCI: safe user observations, recurring trips and professional handoff; no wiring procedures."
+  },
+  {
+    "id": "plumbing-foundation",
+    "domain": "plumbing",
+    "question": "Fixture maintenance: isolation, leak locations, pipe/fitting compatibility and professional handoff."
+  },
+  {
+    "id": "drywall-foundation",
+    "domain": "drywall",
+    "question": "Cosmetic drywall patches: compound, tape, support, finishing and hidden-service checks."
+  },
+  {
+    "id": "materials-foundation",
+    "domain": "materials",
+    "question": "Material identification and cutting: plywood, MDF, melamine, foam and plastics; protect surfaces and avoid unsafe heat methods."
+  },
+  {
+    "id": "adhesives-foundation",
+    "domain": "adhesives",
+    "question": "Material-facing and adhesive compatibility: cure versus initial grab, exclusions and conflicting temperature limits."
+  },
+  {
+    "id": "fastening-foundation",
+    "domain": "fastening",
+    "question": "Anchors, screws and joints: exact system dimensions, embedment, edge distances, substrates and corrosion."
+  },
+  {
+    "id": "hvac-foundation",
+    "domain": "hvac",
+    "question": "User-accessible filter and ventilation maintenance: exact models, washable versus disposable media and service limits."
+  },
+  {
+    "id": "doors-foundation",
+    "domain": "doors",
+    "question": "Interior slab and prehung doors: handing, clearances, hinge/fixing systems and trimming limits."
+  },
+  {
+    "id": "finishing-foundation",
+    "domain": "finishing",
+    "question": "Substrate preparation, grits, primer/topcoat compatibility and exact-model spray troubleshooting."
+  },
+  {
+    "id": "wet-areas-foundation",
+    "domain": "wet-areas",
+    "question": "Waterproofing systems: substrate, overlaps, penetrations, movement joints, drain interfaces and testing."
+  },
+  {
+    "id": "flooring-foundation",
+    "domain": "flooring",
+    "question": "Flooring selection: exact-product moisture tests, flatness, expansion, underlay and acclimation."
+  },
+  {
+    "id": "maintenance-foundation",
+    "domain": "maintenance",
+    "question": "Appliance and alarm maintenance: exact model, symptoms, care intervals and escalation."
+  },
+  {
+    "id": "outdoor-foundation",
+    "domain": "outdoor",
+    "question": "Exterior maintenance and materials: corrosion, air sealing, weather exposure, ventilation and structural limits."
+  }
+]

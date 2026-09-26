@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "record": {
+        "id": "wood-glue-temperature-conflict",
+        "revision": 1,
+        "category": "Glues",
+        "title": "Open time and total assembly time differ",
+        "scope": "Titebond III at 70 F and 50% RH",
+        "tags": [
+          "wood-glue-assembly",
+          "glues",
+          "open",
+          "time",
+          "and",
+          "total",
+          "assembly",
+          "differ"
+        ],
+        "facts": [
+          "The product page lists an application temperature above 47 F, while its limitations mention above 45 F."
+        ],
+        "required": [
+          "Confirm the product and actual temperature/humidity; plan the dry fit first."
+        ],
+        "limits": [
+          "These are assembly windows, not clamp-release or service-cure times."
+        ],
+        "kind": "reference",
+        "risk": "ordinary",
+        "checkedAt": "2026-09-26",
+        "reviewBy": "2026-12-25",
+        "questions": [],
+        "conflicts": [
+          "47 F versus 45 F needs manufacturer clarification; do not issue a universal minimum."
+        ],
+        "applicability": {
+          "products": [
+            "Titebond III at 70 F and 50% RH"
+          ],
+          "materials": [
+            "Wood joints"
+          ],
+          "environment": [
+            "Specified indoor application conditions"
+          ],
+          "jurisdiction": [
+            "Manufacturer/authority scope as cited; verify local requirements"
+          ],
+          "exclusions": [
+            "These are assembly windows, not clamp-release or service-cure times."
+          ]
+        },
+        "sources": [
+          {
+            "id": "managed-glue",
+            "title": "Titebond III Ultimate technical guidance",
+            "url": "https://www.titebond.com/print/product/e8d40b45-0ab3-49f7-8a9c-b53970f736af",
+            "edition": "Live US product sheet checked 2026-09-26"
+          }
+        ],
+        "evidence": [
+          {
+            "fact": 0,
+            "source": "managed-glue",
+            "locator": "Application Guidelines versus Limitations",
+            "support": "Two sections state different minimum temperatures."
+          }
+        ]
+      },
+      "status": "quarantined",
+      "issues": [
+        "Unresolved evidence conflicts"
+      ]
+    }
+  ],
+  "publication": "Not customer-facing"
+}

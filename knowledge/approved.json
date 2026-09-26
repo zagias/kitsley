@@ -1,0 +1,1670 @@
+[
+  {
+    "record": {
+      "id": "filter-disposable",
+      "revision": 1,
+      "category": "HVAC",
+      "title": "Disposable filters are replaced, not washed",
+      "scope": "Disposable HVAC filter maintenance",
+      "tags": [
+        "filter-disposable",
+        "hvac",
+        "disposable",
+        "filters",
+        "are",
+        "replaced",
+        "not",
+        "washed"
+      ],
+      "facts": [
+        "A disposable filter is not designed for washing and reuse; cleaning can damage its filtering material."
+      ],
+      "required": [
+        "Identify disposable versus manufacturer-approved reusable media before choosing maintenance."
+      ],
+      "limits": [
+        "Not a diagnosis of poor airflow or permission to enter service compartments."
+      ],
+      "kind": "reference",
+      "risk": "ordinary",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [
+        "can disposable hvac filters be washed"
+      ],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "Disposable HVAC filter maintenance"
+        ],
+        "materials": [
+          "Disposable media"
+        ],
+        "environment": [
+          "Household HVAC"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "Not a diagnosis of poor airflow or permission to enter service compartments."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-filter",
+          "title": "Trane air-filter maintenance",
+          "url": "https://www.trane.com/residential/en/resources/blog/hvac-air-filter-maintenance-guide/",
+          "edition": "Live manufacturer guide checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-filter",
+          "locator": "Cleaning disposable filters",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.482Z",
+      "digest": "8dcee319331438cf740d864154afb6dadbb71945f26bf6c7fe45b948334eae98"
+    }
+  },
+  {
+    "record": {
+      "id": "filter-mini-split",
+      "revision": 1,
+      "category": "HVAC",
+      "title": "Not every mini-split filter can get wet",
+      "scope": "Trane mini-split filter distinctions",
+      "tags": [
+        "filter-mini-split",
+        "hvac",
+        "not",
+        "every",
+        "mini-split",
+        "filter",
+        "can",
+        "get",
+        "wet"
+      ],
+      "facts": [
+        "Trane distinguishes washable main filters from smaller enzyme filters that must not get wet. Washed main filters must dry fully before refitting."
+      ],
+      "required": [
+        "Confirm the exact unit and filter type in its owner manual."
+      ],
+      "limits": [
+        "Do not copy this cleaning method to another brand or filter type."
+      ],
+      "kind": "reference",
+      "risk": "ordinary",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "Trane mini-split filter distinctions"
+        ],
+        "materials": [
+          "Washable main filter and enzyme filter"
+        ],
+        "environment": [
+          "Trane ductless equipment"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "Do not copy this cleaning method to another brand or filter type."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-filter",
+          "title": "Trane air-filter maintenance",
+          "url": "https://www.trane.com/residential/en/resources/blog/hvac-air-filter-maintenance-guide/",
+          "edition": "Live manufacturer guide checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-filter",
+          "locator": "Cleaning the Air Filter in Your Ductless Mini-Split System",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.484Z",
+      "digest": "7e1c0d6b20b54206e133cc22bd063293f83bdf4557c2990bb189bddd21912398"
+    }
+  },
+  {
+    "record": {
+      "id": "filter-interval",
+      "revision": 1,
+      "category": "HVAC",
+      "title": "Filter maintenance follows use and filter type",
+      "scope": "Trane residential filter maintenance",
+      "tags": [
+        "filter-interval",
+        "hvac",
+        "filter",
+        "maintenance",
+        "follows",
+        "use",
+        "and",
+        "type"
+      ],
+      "facts": [
+        "Usage, pets, environmental dust and filter type affect the maintenance interval. Inspect against the equipment manual instead of assigning every filter the same calendar."
+      ],
+      "required": [
+        "Record equipment, filter type and last inspection."
+      ],
+      "limits": [
+        "A dirty filter is only one possible cause of system symptoms."
+      ],
+      "kind": "reference",
+      "risk": "ordinary",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [
+        "why do hvac filter replacement intervals differ"
+      ],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "Trane residential filter maintenance"
+        ],
+        "materials": [
+          "Disposable or reusable filter"
+        ],
+        "environment": [
+          "Household HVAC"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "A dirty filter is only one possible cause of system symptoms."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-filter",
+          "title": "Trane air-filter maintenance",
+          "url": "https://www.trane.com/residential/en/resources/blog/hvac-air-filter-maintenance-guide/",
+          "edition": "Live manufacturer guide checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-filter",
+          "locator": "When Should You Clean or Replace Your AC/Furnace Filter?",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.484Z",
+      "digest": "eac1765f0bf0c81784070f6e5ade658fc1ab266b732d68f4362173114e494bf1"
+    }
+  },
+  {
+    "record": {
+      "id": "floor-moisture",
+      "revision": 1,
+      "category": "Flooring",
+      "title": "Concrete needs measured moisture checks",
+      "scope": "Pergo product selection over concrete",
+      "tags": [
+        "floor-moisture",
+        "flooring",
+        "concrete",
+        "needs",
+        "measured",
+        "moisture",
+        "checks"
+      ],
+      "facts": [
+        "Pergo requires moisture checks and product-appropriate moisture protection over concrete. A surface that looks dry does not replace the specified test."
+      ],
+      "required": [
+        "Select the exact flooring range and obtain its current test method and limits."
+      ],
+      "limits": [
+        "FAQ limits are not a universal specification for all floor types."
+      ],
+      "kind": "reference",
+      "risk": "ordinary",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "Pergo product selection over concrete"
+        ],
+        "materials": [
+          "Concrete subfloor"
+        ],
+        "environment": [
+          "Indoor floor"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "FAQ limits are not a universal specification for all floor types."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-floor",
+          "title": "Pergo installation FAQ",
+          "url": "https://www.pergoflooring.com/faq",
+          "edition": "Live manufacturer FAQ checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-floor",
+          "locator": "Can I install Pergo over concrete?",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.484Z",
+      "digest": "3eb0483eebb5c5aa2f7beae734b8d2c57a2bdc412ed0e6b27abae9af840754d7"
+    }
+  },
+  {
+    "record": {
+      "id": "floor-acclimation",
+      "revision": 1,
+      "category": "Flooring",
+      "title": "Acclimation is product-specific",
+      "scope": "Pergo installation climate requirements",
+      "tags": [
+        "floor-acclimation",
+        "flooring",
+        "acclimation",
+        "product-specific"
+      ],
+      "facts": [
+        "Pergo says some floors need acclimation and others do not. Seasonal homes also require confirmation against the chosen product instructions."
+      ],
+      "required": [
+        "Confirm the range, room climate and exact installation guide."
+      ],
+      "limits": [
+        "Do not prescribe a universal 48-hour acclimation period."
+      ],
+      "kind": "reference",
+      "risk": "ordinary",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [
+        "does every floor need acclimation"
+      ],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "Pergo installation climate requirements"
+        ],
+        "materials": [
+          "Selected Pergo floor"
+        ],
+        "environment": [
+          "Indoor climate-controlled or seasonal room"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "Do not prescribe a universal 48-hour acclimation period."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-floor",
+          "title": "Pergo installation FAQ",
+          "url": "https://www.pergoflooring.com/faq",
+          "edition": "Live manufacturer FAQ checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-floor",
+          "locator": "Ideal installation conditions; three-season homes",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.484Z",
+      "digest": "3f7a68bc1ad90af2a9bac7a00470ee07e4fdb1d4c6c77c185d8772b9467d041f"
+    }
+  },
+  {
+    "record": {
+      "id": "floor-wet-room",
+      "revision": 1,
+      "category": "Flooring",
+      "title": "A bathroom label needs installation details",
+      "scope": "Pergo room suitability",
+      "tags": [
+        "floor-wet-room",
+        "flooring",
+        "bathroom",
+        "label",
+        "needs",
+        "installation",
+        "details"
+      ],
+      "facts": [
+        "Wet-area suitability and installation details vary by Pergo product. The FAQ excludes rooms with sump pumps or floor drains."
+      ],
+      "required": [
+        "Identify the exact range and room drainage before planning."
+      ],
+      "limits": [
+        "Do not infer shower-floor or flood resistance from a waterproof marketing label."
+      ],
+      "kind": "reference",
+      "risk": "ordinary",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "Pergo room suitability"
+        ],
+        "materials": [
+          "Selected Pergo floor"
+        ],
+        "environment": [
+          "Bathroom or mudroom"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "Do not infer shower-floor or flood resistance from a waterproof marketing label."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-floor",
+          "title": "Pergo installation FAQ",
+          "url": "https://www.pergoflooring.com/faq",
+          "edition": "Live manufacturer FAQ checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-floor",
+          "locator": "In what rooms can I install Pergo floors?",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.484Z",
+      "digest": "41dd630ef6606a3cbd31a8f245d6d3039e878ee8cc4710a2457858a57b6fef75"
+    }
+  },
+  {
+    "record": {
+      "id": "door-handing",
+      "revision": 1,
+      "category": "Doors & trim",
+      "title": "Confirm the swing before fitting the frame",
+      "scope": "Masonite flat-jamb prehung interior unit",
+      "tags": [
+        "door-handing",
+        "doors",
+        "trim",
+        "confirm",
+        "the",
+        "swing",
+        "before",
+        "fitting",
+        "frame"
+      ],
+      "facts": [
+        "Masonite calls for checking the handle side and intended swing when positioning the unit, before fixing it."
+      ],
+      "required": [
+        "Confirm handing, opening and obstructions using the actual unit."
+      ],
+      "limits": [
+        "Does not cover fire-rated or exterior doors."
+      ],
+      "kind": "reference",
+      "risk": "ordinary",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "Masonite flat-jamb prehung interior unit"
+        ],
+        "materials": [
+          "Prehung interior door"
+        ],
+        "environment": [
+          "Indoor opening"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "Does not cover fire-rated or exterior doors."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-door",
+          "title": "Masonite flat-jamb prehung interior doors",
+          "url": "https://www.masonite.com/discover-and-learn/how-to-install-interior-doors/",
+          "edition": "Updated July 3, 2023; checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-door",
+          "locator": "Position the prehung door",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.484Z",
+      "digest": "dc609355bb05555440511d8a37064cbf022254458995cd501bac11ce54047283"
+    }
+  },
+  {
+    "record": {
+      "id": "door-weight-fixing",
+      "revision": 1,
+      "category": "Doors & trim",
+      "title": "Door weight changes the fixing plan",
+      "scope": "Masonite flat-jamb interior prehung unit",
+      "tags": [
+        "door-weight-fixing",
+        "doors",
+        "trim",
+        "door",
+        "weight",
+        "changes",
+        "the",
+        "fixing",
+        "plan"
+      ],
+      "facts": [
+        "The cited Masonite guide specifies different fixing choices for hollow-core and heavier solid-core units. Door weight affects both handling and installation planning."
+      ],
+      "required": [
+        "Match the exact unit, framing and installation sheet; arrange handling help."
+      ],
+      "limits": [
+        "Do not reuse one fixing schedule for every door or an unknown substrate."
+      ],
+      "kind": "reference",
+      "risk": "ordinary",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "Masonite flat-jamb interior prehung unit"
+        ],
+        "materials": [
+          "Hollow-core or solid-core door"
+        ],
+        "environment": [
+          "Indoor opening"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "Do not reuse one fixing schedule for every door or an unknown substrate."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-door",
+          "title": "Masonite flat-jamb prehung interior doors",
+          "url": "https://www.masonite.com/discover-and-learn/how-to-install-interior-doors/",
+          "edition": "Updated July 3, 2023; checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-door",
+          "locator": "Gather equipment; level and secure the jamb",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.484Z",
+      "digest": "7a0f8c88bb27def5359c353c4f90de2931da81a2c7d2b4769acaf7913f291ff8"
+    }
+  },
+  {
+    "record": {
+      "id": "wood-glue-waterproof",
+      "revision": 1,
+      "category": "Glues",
+      "title": "Water resistance does not mean continuous immersion",
+      "scope": "Titebond III Ultimate US product limitations",
+      "tags": [
+        "wood-glue-waterproof",
+        "glues",
+        "water",
+        "resistance",
+        "does",
+        "not",
+        "mean",
+        "continuous",
+        "immersion"
+      ],
+      "facts": [
+        "Titebond III excludes continuous submersion and structural or load-bearing applications, despite its water-resistance classification."
+      ],
+      "required": [
+        "Identify the exact adhesive and the joint function."
+      ],
+      "limits": [
+        "A glue label does not certify a structural connection or pet enclosure."
+      ],
+      "kind": "reference",
+      "risk": "ordinary",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [
+        "does waterproof wood glue allow continuous submersion"
+      ],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "Titebond III Ultimate US product limitations"
+        ],
+        "materials": [
+          "Wood joints"
+        ],
+        "environment": [
+          "Interior/exterior woodworking"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "A glue label does not certify a structural connection or pet enclosure."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-glue",
+          "title": "Titebond III Ultimate technical guidance",
+          "url": "https://www.titebond.com/print/product/e8d40b45-0ab3-49f7-8a9c-b53970f736af",
+          "edition": "Live US product sheet checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-glue",
+          "locator": "Limitations",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.484Z",
+      "digest": "cb6b651a2d986ae2bf1fb7c4d02068216720e98f6d2710e6cbabbd5dfd2e8775"
+    }
+  },
+  {
+    "record": {
+      "id": "wood-glue-assembly",
+      "revision": 1,
+      "category": "Glues",
+      "title": "Open time and total assembly time differ",
+      "scope": "Titebond III at 70 F and 50% RH",
+      "tags": [
+        "wood-glue-assembly",
+        "glues",
+        "open",
+        "time",
+        "and",
+        "total",
+        "assembly",
+        "differ"
+      ],
+      "facts": [
+        "Titebond III lists 8-10 minutes open assembly time and 20-25 minutes total assembly time at 70 F and 50% RH."
+      ],
+      "required": [
+        "Confirm the product and actual temperature/humidity; plan the dry fit first."
+      ],
+      "limits": [
+        "These are assembly windows, not clamp-release or service-cure times."
+      ],
+      "kind": "reference",
+      "risk": "ordinary",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [
+        "what is the difference between open and total assembly time for titebond iii"
+      ],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "Titebond III at 70 F and 50% RH"
+        ],
+        "materials": [
+          "Wood joints"
+        ],
+        "environment": [
+          "Specified indoor application conditions"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "These are assembly windows, not clamp-release or service-cure times."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-glue",
+          "title": "Titebond III Ultimate technical guidance",
+          "url": "https://www.titebond.com/print/product/e8d40b45-0ab3-49f7-8a9c-b53970f736af",
+          "edition": "Live US product sheet checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-glue",
+          "locator": "Application Guidelines",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.484Z",
+      "digest": "77de095a541bdd458e20df5091c5bdc02edc05ccccd7300edb58542e5a31bf51"
+    }
+  },
+  {
+    "record": {
+      "id": "connector-metal-pair",
+      "revision": 1,
+      "category": "Fasteners & anchors",
+      "title": "Match connector and fastener corrosion systems",
+      "scope": "Simpson Strong-Tie connector/fastener combinations",
+      "tags": [
+        "connector-metal-pair",
+        "fasteners",
+        "anchors",
+        "match",
+        "connector",
+        "and",
+        "fastener",
+        "corrosion",
+        "systems"
+      ],
+      "facts": [
+        "Simpson advises stainless fasteners with stainless connectors rather than mixing stainless connectors and galvanized fasteners."
+      ],
+      "required": [
+        "Verify the exact connector schedule and corrosion category."
+      ],
+      "limits": [
+        "Compatible metals alone do not establish connection capacity."
+      ],
+      "kind": "reference",
+      "risk": "elevated",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [
+        "why should connector and fastener metals match"
+      ],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "Simpson Strong-Tie connector/fastener combinations"
+        ],
+        "materials": [
+          "Stainless or galvanized metal connectors"
+        ],
+        "environment": [
+          "Treated wood and exterior exposure"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "Compatible metals alone do not establish connection capacity."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-corrosion",
+          "title": "Simpson Strong-Tie treated-wood corrosion FAQ",
+          "url": "https://www.strongtie.com/products/product-use-information/corrosion-information/pressure-treated-wood-faq",
+          "edition": "Live FAQ checked 2026-09-26; no code-edition claims reused"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-corrosion",
+          "locator": "Can I use galvanized fasteners with stainless steel connectors?",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.484Z",
+      "digest": "7a133edf28b400ee2bccef7453c1513e82d9846d19cf536e8123e6c9d1458259"
+    }
+  },
+  {
+    "record": {
+      "id": "treated-wood-exposure",
+      "revision": 1,
+      "category": "Outdoor & envelope",
+      "title": "Treatment and exposure affect corrosion",
+      "scope": "Simpson treated-wood hardware selection",
+      "tags": [
+        "treated-wood-exposure",
+        "outdoor",
+        "envelope",
+        "treatment",
+        "and",
+        "exposure",
+        "affect",
+        "corrosion"
+      ],
+      "facts": [
+        "Treatment chemistry, moisture and exposure influence corrosion. Simpson does not give an unconditional coating recommendation or a predictable service life for every installation."
+      ],
+      "required": [
+        "Read the treatment label and identify coastal, wet or sheltered conditions."
+      ],
+      "limits": [
+        "An exterior screw label is not a complete corrosion or structural specification."
+      ],
+      "kind": "reference",
+      "risk": "elevated",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "Simpson treated-wood hardware selection"
+        ],
+        "materials": [
+          "Preservative-treated lumber"
+        ],
+        "environment": [
+          "Exterior or damp service"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "An exterior screw label is not a complete corrosion or structural specification."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-corrosion",
+          "title": "Simpson Strong-Tie treated-wood corrosion FAQ",
+          "url": "https://www.strongtie.com/products/product-use-information/corrosion-information/pressure-treated-wood-faq",
+          "edition": "Live FAQ checked 2026-09-26; no code-edition claims reused"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-corrosion",
+          "locator": "Fasteners for preservative treated wood; service life",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.484Z",
+      "digest": "b4053edef715844919f302503f34c92a65bb239a7ce593ab48c092a054e1bd83"
+    }
+  },
+  {
+    "record": {
+      "id": "air-sealing-ventilation",
+      "revision": 1,
+      "category": "Outdoor & envelope",
+      "title": "Plan ventilation alongside air sealing",
+      "scope": "DOE home air-sealing guidance",
+      "tags": [
+        "air-sealing-ventilation",
+        "outdoor",
+        "envelope",
+        "plan",
+        "ventilation",
+        "alongside",
+        "air",
+        "sealing"
+      ],
+      "facts": [
+        "Air sealing and ventilation must be considered together; reducing uncontrolled leaks does not eliminate the need for ventilation."
+      ],
+      "required": [
+        "Identify ventilation and combustion equipment before choosing the scope."
+      ],
+      "limits": [
+        "Do not block designed vents or combustion-air openings."
+      ],
+      "kind": "reference",
+      "risk": "elevated",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [
+        "why does air sealing need ventilation planning"
+      ],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "DOE home air-sealing guidance"
+        ],
+        "materials": [
+          "Building-envelope gaps"
+        ],
+        "environment": [
+          "Occupied home"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "Do not block designed vents or combustion-air openings."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-air",
+          "title": "US DOE Consumer Guide to Air Sealing",
+          "url": "https://www.energy.gov/sites/default/files/2021-08/ES-Air%20Sealing_080421.pdf",
+          "edition": "August 2021; checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-air",
+          "locator": "Page 1: Pair it with ventilation",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.485Z",
+      "digest": "45f3e2944a4f4febd98432584a3cc453ee25cf496e465477b203413a685b725e"
+    }
+  },
+  {
+    "record": {
+      "id": "hot-penetrations",
+      "revision": 1,
+      "category": "Home maintenance",
+      "title": "Flue penetrations need a different sealing approach",
+      "scope": "DOE air-sealing material selection",
+      "tags": [
+        "hot-penetrations",
+        "home",
+        "maintenance",
+        "flue",
+        "penetrations",
+        "need",
+        "different",
+        "sealing",
+        "approach"
+      ],
+      "facts": [
+        "The DOE distinguishes high-temperature sealing needs around combustion-related penetrations and recommends professional help for that work."
+      ],
+      "required": [
+        "Identify the appliance and required clearances."
+      ],
+      "limits": [
+        "Ordinary foam or caulk must not be assumed suitable; do not obstruct exhaust paths."
+      ],
+      "kind": "reference",
+      "risk": "ordinary",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "DOE air-sealing material selection"
+        ],
+        "materials": [
+          "Gaps around hot flues and vents"
+        ],
+        "environment": [
+          "Combustion appliance surroundings"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "Ordinary foam or caulk must not be assumed suitable; do not obstruct exhaust paths."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-air",
+          "title": "US DOE Consumer Guide to Air Sealing",
+          "url": "https://www.energy.gov/sites/default/files/2021-08/ES-Air%20Sealing_080421.pdf",
+          "edition": "August 2021; checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-air",
+          "locator": "Page 2: Materials and professional contractor recommendation",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.485Z",
+      "digest": "54dccdf9a4a085ba171b5015f63b10beb205662a17bff81eba1d42bea8c5e328"
+    }
+  },
+  {
+    "record": {
+      "id": "kerdi-overlap",
+      "revision": 1,
+      "category": "Waterproofing & tile",
+      "title": "KERDI seams have a defined system detail",
+      "scope": "Schluter KERDI US membrane instructions",
+      "tags": [
+        "kerdi-overlap",
+        "waterproofing",
+        "tile",
+        "kerdi",
+        "seams",
+        "have",
+        "defined",
+        "system",
+        "detail"
+      ],
+      "facts": [
+        "The KERDI instructions specify a 2-inch (5 cm) seam overlap, or a butt joint covered using KERDI-BAND and the specified bonding mortar."
+      ],
+      "required": [
+        "Confirm genuine KERDI, substrate and permitted mortar against the current handbook."
+      ],
+      "limits": [
+        "This seam detail alone does not establish a waterproof shower."
+      ],
+      "kind": "reference",
+      "risk": "elevated",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "Schluter KERDI US membrane instructions"
+        ],
+        "materials": [
+          "KERDI membrane"
+        ],
+        "environment": [
+          "Compatible wet-area assembly"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "This seam detail alone does not establish a waterproof shower."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-kerdi",
+          "title": "Schluter KERDI product installation instructions",
+          "url": "https://www.schluter.com/schluter-us/en_US/Membranes/Waterproofing-(KERDI)/Schluter-KERDI/p/KERDI",
+          "edition": "US KERDI page checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-kerdi",
+          "locator": "Installation, item 3",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.485Z",
+      "digest": "877013c6c9df22d8b0dbcf3ef61811ec70675cc33995664598008ba07efa9be3"
+    }
+  },
+  {
+    "record": {
+      "id": "kerdi-test-timing",
+      "revision": 1,
+      "category": "Waterproofing & tile",
+      "title": "Water testing comes before tile",
+      "scope": "Schluter KERDI US membrane instructions",
+      "tags": [
+        "kerdi-test-timing",
+        "waterproofing",
+        "tile",
+        "water",
+        "testing",
+        "comes",
+        "before"
+      ],
+      "facts": [
+        "Schluter states a 24-hour wait after membrane installation before water testing, allowing the mortar to set."
+      ],
+      "required": [
+        "Check the complete system instructions and applicable test requirements."
+      ],
+      "limits": [
+        "This is a wait before testing, not a universal test duration or proof the assembly passes."
+      ],
+      "kind": "reference",
+      "risk": "elevated",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "Schluter KERDI US membrane instructions"
+        ],
+        "materials": [
+          "KERDI membrane and approved mortar"
+        ],
+        "environment": [
+          "Completed compatible wet-area assembly"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "This is a wait before testing, not a universal test duration or proof the assembly passes."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-kerdi",
+          "title": "Schluter KERDI product installation instructions",
+          "url": "https://www.schluter.com/schluter-us/en_US/Membranes/Waterproofing-(KERDI)/Schluter-KERDI/p/KERDI",
+          "edition": "US KERDI page checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-kerdi",
+          "locator": "Installation, water-testing note",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.485Z",
+      "digest": "a83eaf200c13801b9a247c68408e574b5bc49d4a523a7c05e38f7ae49f19006f"
+    }
+  },
+  {
+    "record": {
+      "id": "kerdi-movement",
+      "revision": 1,
+      "category": "Waterproofing & tile",
+      "title": "Do not erase movement joints",
+      "scope": "Schluter KERDI US membrane instructions",
+      "tags": [
+        "kerdi-movement",
+        "waterproofing",
+        "tile",
+        "not",
+        "erase",
+        "movement",
+        "joints"
+      ],
+      "facts": [
+        "The instructions separate KERDI at existing expansion, structural and flexible edge joints and detail KERDI-FLEX at those locations."
+      ],
+      "required": [
+        "Identify joint type and the complete manufacturer detail."
+      ],
+      "limits": [
+        "Do not bridge an unknown movement joint with a generic membrane patch."
+      ],
+      "kind": "reference",
+      "risk": "elevated",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "Schluter KERDI US membrane instructions"
+        ],
+        "materials": [
+          "KERDI/KERDI-FLEX system"
+        ],
+        "environment": [
+          "Existing movement joint"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "Do not bridge an unknown movement joint with a generic membrane patch."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-kerdi",
+          "title": "Schluter KERDI product installation instructions",
+          "url": "https://www.schluter.com/schluter-us/en_US/Membranes/Waterproofing-(KERDI)/Schluter-KERDI/p/KERDI",
+          "edition": "US KERDI page checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-kerdi",
+          "locator": "Installation, item 6",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.485Z",
+      "digest": "922f90536f33b814021a28bdcdccb4c5bfa9dcf008462b81b10f7d9d3017fa7e"
+    }
+  },
+  {
+    "record": {
+      "id": "drywall-sanding-finish",
+      "revision": 1,
+      "category": "Drywall",
+      "title": "Sand the compound without scuffing the paper",
+      "scope": "USG Sheetrock finishing guidance J371",
+      "tags": [
+        "drywall-sanding-finish",
+        "drywall",
+        "sand",
+        "the",
+        "compound",
+        "without",
+        "scuffing",
+        "paper"
+      ],
+      "facts": [
+        "USG lists 150- or 220-grit abrasives and advises light sanding of imperfections while protecting the face paper. Power sanding calls for HEPA dust collection."
+      ],
+      "required": [
+        "Confirm dry compound, product guidance, dust control and absence of suspect old coatings."
+      ],
+      "limits": [
+        "These grit choices do not apply to every compound, plaster or hazardous coating."
+      ],
+      "kind": "reference",
+      "risk": "ordinary",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "USG Sheetrock finishing guidance J371"
+        ],
+        "materials": [
+          "Dry joint compound and paper-faced board"
+        ],
+        "environment": [
+          "Interior non-rated cosmetic finishing"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "These grit choices do not apply to every compound, plaster or hazardous coating."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-drywall",
+          "title": "USG Sheetrock installation and finishing guide J371",
+          "url": "https://www.usg.com/content/dam/USG_Marketing_Communications/united_states/product_promotional_materials/finished_assets/sheetrock-gypsum-panels-installation-guide-en-J371.pdf",
+          "edition": "J371; checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-drywall",
+          "locator": "PDF pages 4 and 11: tools and sanding",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.485Z",
+      "digest": "2080eaa8400c5f634dbd443937365b65cdf8690faccb09723caeb4c19e639acc"
+    }
+  },
+  {
+    "record": {
+      "id": "drywall-blade-debris",
+      "revision": 1,
+      "category": "Drywall",
+      "title": "Dried compound can scratch the next coat",
+      "scope": "USG Sheetrock finishing guidance J371",
+      "tags": [
+        "drywall-blade-debris",
+        "drywall",
+        "dried",
+        "compound",
+        "can",
+        "scratch",
+        "the",
+        "next",
+        "coat"
+      ],
+      "facts": [
+        "USG advises keeping the knife free of dried compound and discarding contaminated compound to avoid scratching the wet coat."
+      ],
+      "required": [
+        "Check the knife edge, pan and fresh compound."
+      ],
+      "limits": [
+        "Do not add unknown materials to repair a contaminated batch."
+      ],
+      "kind": "reference",
+      "risk": "ordinary",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [
+        "why does a drywall knife leave scratches"
+      ],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "USG Sheetrock finishing guidance J371"
+        ],
+        "materials": [
+          "Compatible wet joint compound"
+        ],
+        "environment": [
+          "Interior finishing"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "Do not add unknown materials to repair a contaminated batch."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-drywall",
+          "title": "USG Sheetrock installation and finishing guide J371",
+          "url": "https://www.usg.com/content/dam/USG_Marketing_Communications/united_states/product_promotional_materials/finished_assets/sheetrock-gypsum-panels-installation-guide-en-J371.pdf",
+          "edition": "J371; checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-drywall",
+          "locator": "PDF page 9: taping tips",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.485Z",
+      "digest": "99afaa08902a28f7b41f63424ce48376f6895ce0c2761886cd792afd9fd72373"
+    }
+  },
+  {
+    "record": {
+      "id": "hinge-weight-plan",
+      "revision": 1,
+      "category": "Cabinet doors",
+      "title": "Count handles in the door weight",
+      "scope": "Blum CLIP top BLUMOTION hinge-count guidance",
+      "tags": [
+        "hinge-weight-plan",
+        "cabinet",
+        "doors",
+        "count",
+        "handles",
+        "the",
+        "door",
+        "weight"
+      ],
+      "facts": [
+        "Blum bases hinge selection on door weight, dimensions and material; attached items such as handles count toward the weight."
+      ],
+      "required": [
+        "Identify the hinge family and plate, full front weight, height and width."
+      ],
+      "limits": [
+        "Do not extrapolate the published chart beyond its stated door geometry."
+      ],
+      "kind": "reference",
+      "risk": "ordinary",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [
+        "what affects cabinet hinge count"
+      ],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "Blum CLIP top BLUMOTION hinge-count guidance"
+        ],
+        "materials": [
+          "Cabinet front and attached hardware"
+        ],
+        "environment": [
+          "Cabinet door"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "Do not extrapolate the published chart beyond its stated door geometry."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-hinge",
+          "title": "Blum CLIP top BLUMOTION hinge-count guidance",
+          "url": "https://ea.blum.com/en/number-of-hinges/",
+          "edition": "Manufacturer guidance checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-hinge",
+          "locator": "Door weight and dimensions",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.485Z",
+      "digest": "a3ad987697a74a952e3fb01976f2b5cffe58af4b924fd6ab46692f6758189ae6"
+    }
+  },
+  {
+    "record": {
+      "id": "pipe-o-ring-surface",
+      "revision": 1,
+      "category": "Plumbing",
+      "title": "Push-fit seals need an undamaged pipe surface",
+      "scope": "SharkBite brass push-to-connect preparation",
+      "tags": [
+        "pipe-o-ring-surface",
+        "plumbing",
+        "push-fit",
+        "seals",
+        "need",
+        "undamaged",
+        "pipe",
+        "surface"
+      ],
+      "facts": [
+        "SharkBite requires clean, round pipe without damaging scratches, cuts, gouges or burrs; defects can affect the O-ring seal."
+      ],
+      "required": [
+        "Confirm the fitting generation, compatible pipe and safe isolation."
+      ],
+      "limits": [
+        "A visual check alone does not approve an existing leaking or pressurized joint."
+      ],
+      "kind": "reference",
+      "risk": "elevated",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "SharkBite brass push-to-connect preparation"
+        ],
+        "materials": [
+          "Compatible pipe and O-ring seal"
+        ],
+        "environment": [
+          "Specified plumbing system"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "A visual check alone does not approve an existing leaking or pressurized joint."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-pipe",
+          "title": "SharkBite Canada fitting preparation guidance",
+          "url": "https://www.sharkbite.com/ca/en/resources/blog/service-and-repair/fitting-tips-guides/the-dos-and-donts-of-installing-sharkbite-fittings",
+          "edition": "Brass push-fit guidance checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-pipe",
+          "locator": "Prepare the pipe",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.485Z",
+      "digest": "b289f9ae3d0acff9923f08199cb43bda6acb6b4361382c18d61617c7d0c931f0"
+    }
+  },
+  {
+    "record": {
+      "id": "pipe-prep-method",
+      "revision": 1,
+      "category": "Plumbing",
+      "title": "Do not copy soldering preparation to a push-fit joint",
+      "scope": "SharkBite Canada brass push-fit guidance",
+      "tags": [
+        "pipe-prep-method",
+        "plumbing",
+        "not",
+        "copy",
+        "soldering",
+        "preparation",
+        "push-fit",
+        "joint"
+      ],
+      "facts": [
+        "This SharkBite guide warns against polishing copper with sandpaper or emery cloth as for soldering because resulting scratches can compromise its seal."
+      ],
+      "required": [
+        "Use the exact fitting preparation instructions and approved deburring tool."
+      ],
+      "limits": [
+        "Resolve any conflicting exact-model guidance with the manufacturer before work."
+      ],
+      "kind": "reference",
+      "risk": "elevated",
+      "checkedAt": "2026-09-26",
+      "reviewBy": "2026-12-25",
+      "questions": [],
+      "conflicts": [],
+      "applicability": {
+        "products": [
+          "SharkBite Canada brass push-fit guidance"
+        ],
+        "materials": [
+          "Copper pipe at an O-ring seal"
+        ],
+        "environment": [
+          "Specified plumbing system"
+        ],
+        "jurisdiction": [
+          "Manufacturer/authority scope as cited; verify local requirements"
+        ],
+        "exclusions": [
+          "Resolve any conflicting exact-model guidance with the manufacturer before work."
+        ]
+      },
+      "sources": [
+        {
+          "id": "managed-pipe",
+          "title": "SharkBite Canada fitting preparation guidance",
+          "url": "https://www.sharkbite.com/ca/en/resources/blog/service-and-repair/fitting-tips-guides/the-dos-and-donts-of-installing-sharkbite-fittings",
+          "edition": "Brass push-fit guidance checked 2026-09-26"
+        }
+      ],
+      "evidence": [
+        {
+          "fact": 0,
+          "source": "managed-pipe",
+          "locator": "Prepare the pipe: Do not",
+          "support": "Paraphrased reference fact checked against the cited section; retain all stated applicability and exclusions."
+        }
+      ]
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "Codex source review",
+      "kind": "editorial",
+      "notes": "Opened primary source and checked the scoped paraphrase and limitations. Editorial reference review only; not a qualified-trade certification.",
+      "at": "2026-09-26T13:09:27.485Z",
+      "digest": "b411734a72a6ee93e0e928750e7c03d7f6e1c099fe6bc7ef6f9921eef4dc978e"
+    }
+  }
+]

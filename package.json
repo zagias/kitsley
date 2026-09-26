@@ -6,7 +6,15 @@
     "dev": "next dev --hostname 127.0.0.1",
     "build": "next build",
     "start": "next start --hostname 0.0.0.0",
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "knowledge:plan": "node scripts/knowledge.mjs plan",
+    "knowledge:research": "node scripts/knowledge.mjs research",
+    "knowledge:compile": "node scripts/knowledge.mjs compile",
+    "knowledge:check": "node scripts/knowledge.mjs check",
+    "knowledge:approve": "node scripts/knowledge.mjs approve",
+    "knowledge:revoke": "node scripts/knowledge.mjs revoke",
+    "prebuild": "npm run knowledge:check",
+    "knowledge:validate": "node scripts/knowledge.mjs validate"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

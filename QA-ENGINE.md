@@ -73,3 +73,10 @@ This verifies routing, evidence boundaries and software behavior; it does not va
 - Browser: material choices and Width/Height/Depth expose accessible names; 2 ft, 36 and 11 3/4 update the drawing and exact cut arithmetic. The save instruction matches Use this design. Fractional ranges stay inside supported bounds. Supplier cutting excludes saw/blade/guide, and essentials/protection/optional tools have separate groups.
 - Browser and PDF: fixed cabinet sides, recessed shelf depiction, full-height wall restraint and enlarged solid-carcass attachment detail checked visually. Guide cover, cut-list page and anchor page have readable branded formatting. Fractional inches are explicitly approximate; exact mm remain for supplier cuts.
 - The specialist system is a structured workflow using the existing OpenAI model, scoped local references and source research. It is not independently trained specialist models, autonomous technical publication, universal geometry generation or contractor qualification. See DIY-KNOWLEDGE.md.
+
+
+## Knowledge expansion — 2026-09-26.3
+
+Added 22 scoped primary-source references (86 total), operator research/validation/review/compile/revocation workflow, digest checks, exact-question collision checks, expiry and publication metadata. Candidate search provenance is retained. A real manufacturer temperature discrepancy remains quarantined.
+
+Validation: 234 tests passed; production build passed including generated-catalog parity check. Research API behavior was verified with mocked Responses output; no live paid research call was run in this release. No recurring research job or autonomous publication is enabled. Ordinary query words no longer displace relevant technical references.

@@ -31,3 +31,10 @@ Reference coverage is partial across every area. It does not cover every jurisdi
 ## Verification
 
 Tests cover cross-domain routing and topic changes, evidence/dependency conflicts, absent receiving roles, cycles, concealed-services holds, dates and provenance, privacy of aggregates, backup restoration, public no-AI answers, equipment identification and the API's structured review path. They test software behavior, not construction certification or an expert's complete competence.
+
+
+## Controlled expansion release 2026-09-26.3
+
+Added 22 scoped references (86 total), with explicit applicability and per-fact source locators. The new managed catalog is built from reviewed versioned records in `knowledge/approved.json`. See `knowledge/README.md` for bounded primary-source research, quarantine, content-digest review, expiry and revocation. `npm run build` checks that generated customer knowledge matches the reviewed catalog.
+
+The workflow is operator-run. No background scheduler is enabled, no user conversation is copied into shared knowledge, and no independent model is trained. Earlier records keep their original gates; they have not been retroactively given the new review attestations.
