@@ -16,7 +16,7 @@ Kitsley uses a hybrid, capability-based engine. OpenAI interprets requests and c
 ## Capability boundaries
 
 - General material/method research and structured planning work across topics.
-- The current registered dimensioned builder is the indoor uniform-shelf bookcase. Its bounds and supported materials are enforced in code.
+- The current registered dimensioned builder is the indoor bookcase, including back-aligned interior shelves with individual depths. Its bounds and supported materials are enforced in code.
 - A foamboard craft, converted dog crate, tapered cabinet or novel joint can be researched and assessed. It cannot yet be presented as a validated illustrated build by this builder.
 - A source URL is provenance, not proof that every sentence is correct. Primary-source selection and claim comparison are currently model-assisted; semantic accuracy still requires evaluation and review.
 - No autonomous source-monitoring scheduler, training job or global publication process exists in this release.
@@ -50,3 +50,7 @@ A single workshop model supplies C1/C2/C3 part IDs, each cut depth, pocket centr
 The review shows current/proposed drawings, changes, cut schedule and an already-cut warning. Application stores up to ten previous input/options snapshots and increments the revision. Restoration itself creates a new revision. Completed work is flagged for review; obsolete step advice is hidden by its design key. Pending reviews cannot be applied to a changed project context. Backup restoration preserves the custom shape and rejects malformed inset data instead of silently restoring uniform shelves.
 
 These registered operations are reusable application knowledge. They are not evidence that Kitsley has trained an independent model. Novel construction methods still require research and validation before being added as published capabilities.
+
+## Bounded AI design interpretation
+
+Explicit interior-depth requests that exceed the local phrase parser use one small structured interpretation call. The model identifies the shelf number, operation, quantity and units from the latest request and current saved model; older assistant prose is excluded. Kitsley converts units, computes the new depths and runs the same compiler. It does not ask the model to write new build steps or load claims. Product/method questions remain on the source-research path. A missing or malformed interpretation leaves the saved design unchanged. Design-operation responses never enter the plain-answer cache.
