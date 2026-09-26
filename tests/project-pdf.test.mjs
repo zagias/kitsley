@@ -1,0 +1,7 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {projectPDF} from '../lib/project-pdf.mjs';
+import {workshopDefaults} from '../lib/bookcase-workshop.mjs';
+import {POST} from '../app/api/project-pdf/route.js';
+test('all project documents are real PDFs with vector illustrations and page metadata',async()=>{for(const kind of ['cut','shopping','guide','drawings']){const pdf=await projectPDF({kind,input:workshopDefaults,options:{finish:'paint'},revision:2});assert.match(pdf.subarray(0,8).toString(),/^%PDF-1/);assert.match(pdf.toString('latin1'),/\/Author \d+ 0 R/);assert.match(pdf.toString('latin1'),/\/Type \/Page/);assert.ok(pdf.length>4000);}});
+test('PDF endpoint rejects cross-origin, invalid dimensions and oversize input',async()=>{const saved=process.env.APP_URL;process.env.APP_URL='https://kitsley.test';try{const r=(body,origin='https://kitsley.test')=>new Request('https://kitsley.test/api/project-pdf',{method:'POST',headers:{origin},body:JSON.stringify(body)});assert.equal((await POST(r({},'https://wrong.test'))).status,403);assert.equal((await POST(r({kind:'cut',input:{...workshopDefaults,width:2000}}))).status,400);assert.equal((await POST(r({record:{notes:'x'.repeat(160000)}}))).status,413);const result=await POST(r({kind:'cut',input:workshopDefaults}));assert.equal(result.status,200);assert.equal(result.headers.get('Content-Type'),'application/pdf');}finally{if(saved===undefined)delete process.env.APP_URL;else process.env.APP_URL=saved;}});

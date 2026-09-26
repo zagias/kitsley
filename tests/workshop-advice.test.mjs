@@ -1,0 +1,4 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {parseWorkshopAdvice,mergeStepAdvice,savedWorkshopContext} from '../lib/workshop-advice.mjs';
+test('tailored guidance persists against multiple steps without losing unrelated advice',()=>{const record={pack:{build:{key:'revision-2'}},stepAdvice:{0:{text:'Old dimensions',designKey:'revision-1'},1:{text:'Hand sand',designKey:'revision-2'}}};const response=parseWorkshopAdvice(JSON.stringify({text:'Use a brush.',steps:[{step:8,guidance:'Apply thin coats with a synthetic brush.'},{step:10,guidance:'Invalid'}]}));const updated={...record,stepAdvice:mergeStepAdvice(record,response,'I only have a brush')};assert.equal(updated.stepAdvice[7].text,'Apply thin coats with a synthetic brush.');assert.equal(updated.stepAdvice[1].text,'Hand sand');assert.deepEqual(savedWorkshopContext(updated).map(x=>x.step),[2,8]);assert.equal(record.stepAdvice[7],undefined);});
