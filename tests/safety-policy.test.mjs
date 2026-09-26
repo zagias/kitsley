@@ -20,6 +20,8 @@ test('routine planning stays light, but hands-on requests pause for checks',()=>
  assert.equal(safetyMustPause(record,'Give me a useful starting approach based on these details.'),false);
  assert.equal(safetyMustPause(record,'How do I reset it?'),true);
  assert.equal(safetyProfile({request:'Build a freestanding bookcase'}),null);
+ assert.equal(safetyProfile({request:'Make a foamboard display with no structural load'}),null);
+ assert.equal(safetyProfile({request:'Repair structural support'}).level,'professional-scope');
  assert.equal(safetyProfile({request:'Install floating shelves'}).risks[0].id,'mounting');
 });
 test('hazardous procedures are handled without a model, even offline and without a paid plan',async()=>{

@@ -15,3 +15,12 @@ test('research applies outside bookcases and blocks conflicting or fabricated ev
  status='supported';urls=['https://invented.example/manual'];const missing=await (await ask(body)).json();assert.deepEqual(missing.stepUpdates,[]);assert.equal(missing.research.status,'limited');assert.match(missing.text,/could not confirm/);
  urls=[url];const paint=await (await ask({...body,guideId:'paint-cabinets',workshop:undefined})).json();assert.equal(paint.research.status,'supported');assert.equal(paint.research.sources[0].url,url);
 });
+
+test('first discovery advice requires a real source check and unknown projects require a structured assessment',async t=>{
+ const dir=await mkdtemp(join(tmpdir(),'kitsley-discovery-research-')),saved={...process.env},before=globalThis.fetch;
+ t.after(async()=>{globalThis.fetch=before;for(const k of Object.keys(process.env))if(!(k in saved))delete process.env[k];Object.assign(process.env,saved);await rm(dir,{recursive:true,force:true});});
+ Object.assign(process.env,{BILLING_ENABLED:'false',KITSLEY_DATA_DIR:dir,APP_URL:'https://kitsley.test',KITSLEY_AI_ENABLED:'true',OPENAI_API_KEY:'test-only',OPENAI_MODEL:'test-model'});
+ globalThis.fetch=async(_,init)=>{const body=JSON.parse(init.body);assert.equal(body.tool_choice,'required');assert.equal(body.text.format.schema.properties.technicalAssessment.type,'object');return Response.json({status:'completed',output:[{content:[{type:'output_text',text:JSON.stringify({advice:'Use an unverified adhesive.',question:'Is this your plan?',choices:[],facts:['Indoor','Display','Foamboard'],unknowns:['Brand'],briefReady:true,research:{status:'supported',note:'No real source',urls:[]}})}]}]});};
+ const r=await POST(new Request('https://kitsley.test/api/conversation',{method:'POST',headers:{origin:'https://kitsley.test'},body:JSON.stringify({projectId:'test',intake:true,messages:[{role:'user',content:'Help with a foamboard display.'}]})}));
+ const data=await r.json();assert.equal(r.status,200);assert.equal(data.research.status,'limited');assert.equal(data.discovery,undefined);assert.match(data.text,/could not confirm/);assert.deepEqual(data.stepUpdates,[]);
+});
