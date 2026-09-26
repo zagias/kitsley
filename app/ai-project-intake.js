@@ -14,6 +14,7 @@ import BrandMark from './brand-mark';
 import {useEffect,useRef,useState} from 'react';
 export default function AIProjectIntake({record,onUpdate,onNavigate,aiEnabled=true,embedded=false,owned=[],onDesignProposal}){
  const [text,setText]=useState(''),[busy,setBusy]=useState(false),[error,setError]=useState(''),[planRequired,setPlanRequired]=useState(false),[paid,setPaid]=useState(false),[signInNeeded,setSignInNeeded]=useState(false),[remaining,setRemaining]=useState(null),[signedIn,setSignedIn]=useState(null),[custom,setCustom]=useState(false);
+ const latestRecord=useRef(record);latestRecord.current=record;
  const started=useRef(false),alive=useRef(true),lock=useRef(false),current=useRef(null),pendingAnswer=useRef('');
  const workshop=record.guideId==='bookcase'&&record.pack?.build?.version===1;
  const setupActive=!workshop&&record.setup?.version===1&&!!setupQuestion(record),q=setupActive?setupQuestion(record):null;
@@ -39,7 +40,7 @@ export default function AIProjectIntake({record,onUpdate,onNavigate,aiEnabled=tr
   try{
    await syncNow();const response=await fetch('/api/conversation',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({projectId:record.id,guideId:record.guideId,intake:true,briefConfirmed:record.briefConfirmed===true,workshop:workshop?{input:record.pack.input,build:record.pack.build}:undefined,messages:conversationMessages(record,messages,owned)})});
    const data=await response.json();if(!response.ok){setPlanRequired(data.code==='plan_required');setSignInNeeded(data.code==='sign_in');throw Error(data.error||'Please try again.');}
-   if(alive.current){setPaid(['plus','project-pass'].includes(data.plan));if(Number.isInteger(data.freeRemaining))setRemaining(data.freeRemaining);onUpdate({...record,...(workshop?{stepAdvice:mergeStepAdvice(record,data,answer)}:{}),messages:[...messages,{role:'assistant',content:data.text,source:'ai'}],urgent:!!data.urgent,discovery:data.discovery||null,briefConfirmed:data.discovery?false:record.briefConfirmed,updatedAt:new Date().toISOString()});setText('');setCustom(false);refreshAllowance();focusStep();}
+   if(alive.current){setPaid(['plus','project-pass'].includes(data.plan));if(Number.isInteger(data.freeRemaining))setRemaining(data.freeRemaining);onUpdate({...latestRecord.current,...(workshop?{stepAdvice:mergeStepAdvice({...latestRecord.current,pack:record.pack},data,answer)}:{}),messages:[...latestRecord.current.messages,{role:'user',content:answer},{role:'assistant',content:data.text,source:'ai'}],urgent:!!data.urgent,discovery:data.discovery||null,briefConfirmed:data.discovery?false:record.briefConfirmed,updatedAt:new Date().toISOString()});setText('');setCustom(false);refreshAllowance();focusStep();}
   }catch(e){if(alive.current)setError(e.message);}finally{lock.current=false;if(alive.current)setBusy(false);}
  }
  const offer=()=>onNavigate('/offers?project='+encodeURIComponent(record.id));
