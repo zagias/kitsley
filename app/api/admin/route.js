@@ -1,10 +1,12 @@
+import {billingDB} from '../../../lib/billing.mjs';
+import {aggregateGuideLearning} from '../../../lib/internal-answers.mjs';
 import {timingSafeEqual} from 'node:crypto';
 import {readStore,mutateStore} from '../../../lib/store.mjs';
 import {validLink} from '../../../lib/validation.mjs';
 import {merchants,projects} from '../../../lib/catalog.mjs';
 export const runtime='nodejs';
 function authorized(req){const secret=process.env.ADMIN_TOKEN;if(!secret||secret.length<24)return false;const token=req.headers.get('authorization')?.replace(/^Bearer /,'')??'';return Buffer.byteLength(secret)===Buffer.byteLength(token)&&timingSafeEqual(Buffer.from(secret),Buffer.from(token));}
-export async function GET(req){if(!authorized(req))return Response.json({error:'A valid admin token is required.'},{status:401});try{return Response.json(await readStore(),{headers:{'Cache-Control':'no-store'}});}catch{return Response.json({error:'Storage unavailable.'},{status:503});}}
+export async function GET(req){if(!authorized(req))return Response.json({error:'A valid admin token is required.'},{status:401});try{const store=await readStore();try{const {data,error}=await billingDB().from('account_workspaces').select('entities').limit(500);if(error)throw error;store.guideLearning=aggregateGuideLearning((data||[]).flatMap(row=>Object.entries(row.entities||{}).filter(([key])=>key.startsWith('conversation:')).map(([,value])=>value)));store.guideLearningScope='Up to 500 account workspaces';}catch{store.guideLearning=[];store.guideLearningScope='Learning summary unavailable';}return Response.json(store,{headers:{'Cache-Control':'no-store'}});}catch{return Response.json({error:'Storage unavailable.'},{status:503});}}
 export async function POST(req){if(!authorized(req))return Response.json({error:'Unauthorized'},{status:401});try{
  const body=await req.json();
  await mutateStore(s=>{
