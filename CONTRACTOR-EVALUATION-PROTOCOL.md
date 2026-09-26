@@ -13,6 +13,14 @@ For each of cabinetry, cabinet doors, adhesives, fastening, finishing and materi
 - A critical error fails the area even if the average is high. An unresolved case is not a pass. An outage is an execution failure, not evidence of knowledge.
 - Model grading can triage failures but cannot certify a trade. Keep answers, evidence, actual model/version, application revision, reviewer and reasons. Independent qualified review and field outcomes remain distinct evidence.
 
+## GPT-6 comparison policy
+
+The owner requests GPT-6 as the recurring comparison target. Keep the customer-facing configured model unchanged (currently GPT-4.1 mini). The evaluator must record the exact returned model ID for both sides, application/source revision and the identical scenario inputs. The comparison model runs only in evaluation subprocesses; it must never overwrite the application configuration.
+
+Check model access against the application's API account before a run. If GPT-6 is unavailable, label the GPT-6 comparison blocked; do not silently substitute GPT-5.4 or describe Codex's model access as API-account access. Earlier GPT-5.4 probes are explicitly a different comparison.
+
+GPT-6 is a reference challenger, not a ground-truth oracle. Score both answers against primary sources, independent arithmetic and the same practical rubric. Disagreements become investigation items. Neither majority agreement nor matching wording constitutes a pass. Preserve raw and application-presented answers separately to identify engine filtering problems. Keep reviewer identity and unresolved questions in the record.
+
 ## Short improvement cycles
 
 Run a small development batch, inspect failures, fix shared causes, add regression cases, and run a different variation. Preserve failed results. Do not lower acceptance criteria or relabel unsupported capabilities to improve a score. Escalating a routine task unnecessarily can fail usefulness; an appropriate clarification is a pass only when it identifies a consequential missing fact and gives useful guidance within available facts.
@@ -28,3 +36,9 @@ These six probes exercise shared engine context, source checks, specialist decis
 ## Ontario scope
 
 The jurisdiction context supplies checked official research leads, retains municipal scope, withholds expired reference statements, and does not infer province from currency or ambiguous city names. Current project-specific rules still need authoritative verification. No numeric code compliance checker, complete Ontario-code corpus, trade licence or general construction approval has been established.
+
+## Paired pilot command
+
+`node scripts/contractor-compare.mjs 0 1` runs the same case with the configured app model and GPT-6 Astra. Set `KITSLEY_BENCHMARK_MODEL` only to another explicitly chosen, available GPT-6 model. The script checks access first and refuses a silent substitute. Increase count up to six for at most twelve model calls; results remain awaiting review, never automatic passes. Capture stdout in the evaluation archive before terminating a one-off dyno.
+
+On 26 September 2026, the API account listed `gpt-6-astra`, `gpt-6-sol` and `gpt-6-luna`. GPT-6 Astra was successfully called in a cabinet probe. The production model remained `gpt-4.1-mini`.
