@@ -26,6 +26,6 @@ for(const [domain,question,expectation] of scenarios.slice(start,start+count)){
   const raw=JSON.parse(data.output?.flatMap(o=>o.content||[]).filter(c=>c.type==='output_text').map(c=>c.text).join('\n'));
   const research=researchEvidence(data,raw.research,{required:true});
   const answer=constrainSafetyResult(engineDecision({record,question,raw,result:{text:raw.text},research}),safetyDecision(record,question));
-  console.log(JSON.stringify({domain,question,expectation,mode:'core-engine-probe-not-http-flow',model:data.model,responseId:data.id,usage:data.usage,answer,rawText:raw.text}));
+  console.log(JSON.stringify({domain,question,expectation,mode:'core-engine-probe-not-http-flow',model:data.model,responseId:data.id,usage:data.usage,answer:{text:answer.text,research:answer.research,technicalAssessment:answer.technicalAssessment?{stage:answer.technicalAssessment.stage,question:answer.technicalAssessment.question}:null,phase:answer.engine?.phase},rawText:raw.text}));
  }catch(e){console.log(JSON.stringify({domain,question,status:'failed-to-evaluate',error:e.message}));process.exitCode=1;}
 }
