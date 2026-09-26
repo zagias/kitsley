@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {workshopModel,workshopDefaults,workshopProgress,workshopSteps,workshopShopping} from '../lib/bookcase-workshop.mjs';
 import {workshopArt} from '../lib/bookcase-workshop-art.mjs';
-import {compileBookcase,compileProposal,proposalCurrent} from '../lib/project-engine.mjs';
+import {compileBookcase,compileProposal,proposalCurrent,engineDecision} from '../lib/project-engine.mjs';
 import {proposeChange} from '../lib/project-actions.mjs';
 import {commitWorkshop} from '../lib/workshop-revision.mjs';
 import {makeBackup,validateBackup} from '../lib/workspace-backup.mjs';
@@ -65,4 +65,16 @@ test('remote operations use the same compiler and must remain bound to their exa
  assert.equal(compileProposal(record,op,'Make the top shelf narrower').status,'unsupported');
  assert.ok(designOperationSchema.anyOf[1].properties.changes.required.includes('shelfInsets'));
  assert.throws(()=>workshopArt('overview',workshopModel(input)));
+});
+
+
+test('registered depth geometry can be reviewed without invented web support; uncertain methods stay blocked',()=>{
+ const op={builder:'bookcase.recessed-shelves.v1',target:'interior-shelves',changes:{shelfInsets:[0,94]}};
+ const base={record,question:'Adjust the upper interior shelf to two hundred millimetres deep',raw:{designOperation:op},result:{text:'Invent an extra support',stepUpdates:[{step:1,text:'Cut now'}]},research:{status:'limited',sources:[]}};
+ const d=engineDecision(base);assert.equal(d.designProposal.status,'review');assert.equal(d.engine.phase,'review-design');assert.deepEqual(d.stepUpdates,[]);assert.doesNotMatch(d.text,/extra support/);assert.equal(d.designProposal.input.shelfInsets[1],94);
+ assert.ok(proposalCurrent({...record,stepAdvice:{}},d.designProposal));
+ assert.equal(proposalCurrent({...record,stepAdvice:{0:{text:'Changed guidance'}}},d.designProposal),false);
+ for(const status of ['needs-details','conflicting'])assert.equal(engineDecision({...base,research:{status,sources:[]}}).designProposal,null);
+ const wrong={...op,changes:{shelfInsets:[0,94],material:'plywood'}};assert.equal(engineDecision({...base,raw:{designOperation:wrong}}).designProposal.status,'unsupported');
+ const material={builder:'bookcase.uniform-panels.v1',target:'whole-design',changes:{material:'plywood'}};assert.equal(engineDecision({...base,raw:{designOperation:material}}).designProposal,null);
 });
